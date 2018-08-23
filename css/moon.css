@@ -257,39 +257,6 @@ body.three-d div.slides {
 }
 
 /* Content */
-/*
-  Font sizes:
-  header h1 - 50px
-  h2, p - 20px
-  default, pre, input - 16px
-*/
-
-@font-face {
-  font-family: 'Yanone Kaffeesatz';
-  font-style: normal;
-  font-weight: 400;
-  src: url('/src/fonts/yanone/YanoneKaffeesatz-Regular.ttf') format('truetype');
-}
-@font-face {
-  font-family: 'Inconsolata';
-  font-style: normal;
-  font-weight: normal;
-  src: url('/src/fonts/inconsolata/Inconsolata.ttf') format('truetype');
-}
-@font-face {
-	font-family: 'JunctionRegular';
-	src: url('/src/fonts/junction02/junction02-webfont.eot');
-	src: local('☺'), url('/src/fonts/junction02/junction02-webfont.woff') format('woff'), url('/src/fonts/junction02/junction02-webfont.ttf') format('truetype'), url('/src/fonts/junction02/junction02-webfont.svg#webfontwzJOjWvv') format('svg');
-	font-weight: normal;
-	font-style: normal;
-}
-@font-face {
-	font-family: 'LeagueGothicRegular';
-	src: url('/src/fonts/leaguegothic/leaguegothic-webfont.eot');
-	src: local('☺'), url('/src/fonts/leaguegothic/leaguegothic-webfont.woff') format('woff'), url('/src/fonts/leaguegothic/leaguegothic-webfont.ttf') format('truetype'), url('/src/fonts/leaguegothic/leaguegothic-webfont.svg#webfontWgfhmMGx') format('svg');
-	font-weight: normal;
-	font-style: normal;
-}
 
 header {
   font-family: Arial;
@@ -321,7 +288,7 @@ h2 {
   padding: 0;
   margin: 15px 0 5px 0;
 }
-      
+
 h2:first-child {
   margin-top: 0;
 }
@@ -417,7 +384,7 @@ pre select {
   font-family: Monaco, Courier;
   border: 1px solid #c61800;
 }
-  
+
 input {
   font-size: 16px;
   margin-right: 10px;
@@ -435,7 +402,7 @@ button {
 button.large {
   font-size: 32px;
 }
-  
+
 pre b {
   font-weight: normal;
   color: #c61800;
@@ -479,7 +446,7 @@ video {
 .js,
 .html,
 .key {
-  font-family: 'Inconsolata';
+  font-family: monospace;
   color: black;
   display: inline-block;
   padding: 6px 10px 3px 10px;
@@ -551,7 +518,7 @@ video {
 
 #presentation-counter {
   color: #fff;
-  font: 100px 'Yanone Kaffeesatz';
+  font: 100px 'Sans-Serif';
   letter-spacing: 1px;
   position: relative;
   top: 40%;
@@ -565,9 +532,9 @@ video {
 }
 
 [data-build] > * {
-  -webkit-transition: opacity 0.5s ease-in-out 0.2s; 
-  -moz-transition: opacity 0.5s ease-in-out 0.2s; 
-  -o-transition: opacity 0.5s ease-in-out 0.2s; 
+  -webkit-transition: opacity 0.5s ease-in-out 0.2s;
+  -moz-transition: opacity 0.5s ease-in-out 0.2s;
+  -o-transition: opacity 0.5s ease-in-out 0.2s;
 }
 
 [data-build] > *.to-build {

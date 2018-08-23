@@ -239,23 +239,8 @@ body.three-d div.slides {
   default, pre, input - 16px
 */
 
-@font-face {
-  font-family: 'JunctionRegular';
-  src: url('/src/fonts/junction02/junction02-webfont.eot');
-  src: local('☺'), url('/src/fonts/junction02/junction02-webfont.woff') format('woff'), url('/src/fonts/junction02/junction02-webfont.ttf') format('truetype'), url('/src/fonts/junction02/junction02-webfont.svg#webfontwzJOjWvv') format('svg');
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'LeagueGothicRegular';
-  src: url('/src/fonts/leaguegothic/leaguegothic-webfont.eot');
-  src: local('☺'), url('/src/fonts/leaguegothic/leaguegothic-webfont.woff') format('woff'), url('/src/fonts/leaguegothic/leaguegothic-webfont.ttf') format('truetype'), url('/src/fonts/leaguegothic/leaguegothic-webfont.svg#webfontWgfhmMGx') format('svg');
-  font-weight: normal;
-  font-style: normal;
-}
-
 header {
-  font-family: 'Droid Sans';
+  font-family: 'Sans Serif';
   font-weight: normal;
   letter-spacing: -.05em;
   color: black;
@@ -277,19 +262,19 @@ h1 {
 }
 
 h2 {
-  font-family: 'Droid Sans';
+  font-family: 'Sans Serif';
   color: black;
   font-size: 20px;
   padding: 0;
   margin: 15px 0 5px 0;
 }
-      
+
 h2:first-child {
   margin-top: 0;
 }
 
 section, footer {
-  font-family: 'Droid Sans';
+  font-family: 'Sans Serif';
   color: #3f3f3f;
   text-shadow: rgba(0, 0, 0, 0.2) 0 2px 5px;
   margin: 100px 30px 0;
@@ -365,7 +350,7 @@ section.middle {
 
 pre {
   text-align: left;
-  font-family: 'Droid Sans Mono', Courier;
+  font-family: Monaco, Courier;
   padding: 10px 20px;
   background: rgba(255, 0, 0, 0.05);
   -webkit-border-radius: 8px;
@@ -379,7 +364,7 @@ pre select {
   font-family: Monaco, Courier;
   border: 1px solid #c61800;
 }
-  
+
 input {
   font-size: 16px;
   margin-right: 10px;
@@ -397,7 +382,7 @@ button {
 button.large {
   font-size: 32px;
 }
-  
+
 pre b {
   font-weight: normal;
   color: #c61800;
@@ -523,9 +508,9 @@ video {
 }
 
 [data-build] > * {
-  -webkit-transition: opacity 0.5s ease-in-out 0.2s; 
-  -moz-transition: opacity 0.5s ease-in-out 0.2s; 
-  -o-transition: opacity 0.5s ease-in-out 0.2s; 
+  -webkit-transition: opacity 0.5s ease-in-out 0.2s;
+  -moz-transition: opacity 0.5s ease-in-out 0.2s;
+  -o-transition: opacity 0.5s ease-in-out 0.2s;
 }
 
 [data-build] > *.to-build {

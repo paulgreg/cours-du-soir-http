@@ -111,8 +111,8 @@
 	  prop = style.replace(/^(.)/, bump).replace(/-([a-z])/ig, bump);
 
 	  for (var len = prefixes.length; len--; ){
-	    if (bool) { 
-	      break; 
+	    if (bool) {
+	      break;
 	    }
 	    bool = prefixes[len] + prop in elem.style;
 	  }
@@ -244,7 +244,7 @@
 	    });
 	    if (idx >= 0) {
 	      var elem = this._buildList.splice(idx, 1)[0];
-	     
+
 	      var _t = this;
 	      if (canTransition) {
 		var l = function(evt) {
@@ -294,13 +294,13 @@
 	    this.current = "landing-slide";
 	  }
 	  var _t = this;
-	  doc.addEventListener('keydown', 
+	  doc.addEventListener('keydown',
 	      function(e) { _t.handleKeys(e); }, false);
-	  doc.addEventListener('touchstart', 
+	  doc.addEventListener('touchstart',
 	      function(e) { _t.handleTouchStart(e); }, false);
-	  doc.addEventListener('touchend', 
+	  doc.addEventListener('touchend',
 	      function(e) { _t.handleTouchEnd(e); }, false);
-	  window.addEventListener('popstate', 
+	  window.addEventListener('popstate',
 	      function(e) { if (e.state) { _t.go(e.state); } }, false);
 	  query('#left-init-key').addEventListener('click',
 	      function() { _t.next(); }, false);
@@ -318,10 +318,10 @@
 		slideCount = i;
 	      }
 	    });
-	    return slideCount + 1;  
+	    return slideCount + 1;
 	  },
 	  _update: function(dontPush) {
-	    // in order to delay the time where the counter shows the slide number we check if 
+	    // in order to delay the time where the counter shows the slide number we check if
 	    // the slides are already loaded (so we show the loading... instead)
 	    // the technique to test visibility is taken from here
 	    // http://stackoverflow.com/questions/704758/how-to-check-if-an-element-is-really-visible-with-javascript
@@ -370,14 +370,6 @@
 	      el.style.display = (notesOn) ? 'block' : 'none';
 	    });
 	  },
-	  switch3D: function() {
-	    toggleClass(document.body, 'three-d');
-	  },
-	  toggleHightlight: function() {
-	    var link = query('#prettify-link');
-	    link.disabled = !(link.disabled);
-	    sessionStorage['highlightOn'] = !link.disabled;
-	  },
 	  changeTheme: function() {
 	    var linkEls = queryAll('link.theme');
 	    var sheetIndex = 0;
@@ -391,11 +383,11 @@
 	    sessionStorage['theme'] = linkEls[(sheetIndex + 1) % linkEls.length].href;
 	  },
 	  handleKeys: function(e) {
-	    
+
 	    if (/^(input|textarea)$/i.test(e.target.nodeName) || e.target.isContentEditable) {
 	      return;
 	    }
-	    
+
 	    switch (e.keyCode) {
 	      case 37: // left arrow
 		this.prev(); break;
@@ -405,10 +397,6 @@
 	      case 50: // 2
 		this.showNotes(); break;
 	      case 51: // 3
-		this.switch3D(); break;
-	      case 72: // H
-		this.toggleHightlight(); break;
-	      case 84: // T
 		this.changeTheme(); break;
 	    }
 	  },
@@ -426,11 +414,6 @@
 	    }
 	  },
 	};
-
-	// load highlight setting from session storage, if available.
-	// session storage can only store strings so we have to assume type coercion
-	// for the boolean logic here
-	query('#prettify-link').disabled = !(sessionStorage['highlightOn'] == 'true');
 
 	// disable style theme stylesheets
 	var linkEls = queryAll('link.theme');

