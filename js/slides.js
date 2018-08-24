@@ -302,8 +302,6 @@
 	      function(e) { _t.handleTouchEnd(e); }, false);
 	  window.addEventListener('popstate',
 	      function(e) { if (e.state) { _t.go(e.state); } }, false);
-	  query('#left-init-key').addEventListener('click',
-	      function() { _t.next(); }, false);
 	  this._update();
 	};
 
