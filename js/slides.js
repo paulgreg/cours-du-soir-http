@@ -361,13 +361,6 @@
 	    this._update(true);
 	  },
 
-	  _notesOn: false,
-	  showNotes: function() {
-	    var isOn = this._notesOn = !this._notesOn;
-	    queryAll('.notes').forEach(function(el) {
-	      el.style.display = (notesOn) ? 'block' : 'none';
-	    });
-	  },
 	  handleKeys: function(e) {
 
 	    if (/^(input|textarea)$/i.test(e.target.nodeName) || e.target.isContentEditable) {
@@ -380,8 +373,6 @@
 	      case 39: // right arrow
 	      case 32: // space
 		this.next(); break;
-	      case 50: // 2
-		this.showNotes(); break;
 	    }
 	  },
 	  _touchStartX: 0,
