@@ -368,18 +368,6 @@
 	      el.style.display = (notesOn) ? 'block' : 'none';
 	    });
 	  },
-	  changeTheme: function() {
-	    var linkEls = queryAll('link.theme');
-	    var sheetIndex = 0;
-	    linkEls.forEach(function(stylesheet, i) {
-	      if (!stylesheet.disabled) {
-		sheetIndex = i;
-	      }
-	    });
-	    linkEls[sheetIndex].disabled = true;
-	    linkEls[(sheetIndex + 1) % linkEls.length].disabled = false;
-	    sessionStorage['theme'] = linkEls[(sheetIndex + 1) % linkEls.length].href;
-	  },
 	  handleKeys: function(e) {
 
 	    if (/^(input|textarea)$/i.test(e.target.nodeName) || e.target.isContentEditable) {
@@ -394,8 +382,6 @@
 		this.next(); break;
 	      case 50: // 2
 		this.showNotes(); break;
-	      case 51: // 3
-		this.changeTheme(); break;
 	    }
 	  },
 	  _touchStartX: 0,
@@ -412,13 +398,6 @@
 	    }
 	  },
 	};
-
-	// disable style theme stylesheets
-	var linkEls = queryAll('link.theme');
-	var stylesheetPath = sessionStorage['theme'] || 'css/sand.css';
-	linkEls.forEach(function(stylesheet) {
-	  stylesheet.disabled = !(stylesheet.href.indexOf(stylesheetPath) != -1);
-	});
 
 	// Initialize
 	var slideshow = new SlideShow(queryAll('.slide'));
