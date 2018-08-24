@@ -959,5 +959,14 @@ Content-Length: xxxx
   <script src="js/slides.js"></script>
   <script src="js/slides.js"></script>
   <script src="js/prefixfree.min.js"></script>
+  <script defer="defer">
+      if ('serviceWorker' in navigator) {
+          navigator.serviceWorker.register('./sw.js').then(function() {
+              console.log('service worker registration complete');
+          }, function(e) {
+              console.log('service worker registration failure:', e);
+          });
+      }
+  </script>
   </body>
 </html>
