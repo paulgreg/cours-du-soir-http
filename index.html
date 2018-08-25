@@ -1,8 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
     <head>
         <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=Edge;chrome=1" />
         <title>Présentation de HTTP</title>
         <link href="css/default.css" class="theme" rel="stylesheet" media="screen" />
         <style>
@@ -30,11 +29,9 @@
                         #landing-slide h2 { margin-top: 1em; font-size: 36px; color: #665544; }
                     </style>
                     <section class="middle">
-                    <hgroup>
                     <h1>HTTP</h1>
                     <h2>HyperText Transfer Protocol</h2>
                     <h3>Grégory Paul - <a href="https://paulgreg.me" title="Portfolio">paulgreg.me</a></h3>
-                    </hgroup>
                     </section>
                 </div>
 
@@ -475,7 +472,7 @@ Accept-Ranges: bytes
 Content-Range: bytes 0-999/3980</strong>
 Content-Type: image/jpeg
 ...</pre>
-<p>Utilisé pour reprendre les téléchargements ou pour les médias (audio, vidéo, <a href="https://paulgreg.me/https-slides/?full#interception-traffic-http-video">exemple</a>)</strong>
+<p>Utilisé pour reprendre les téléchargements ou pour les médias (audio, vidéo, <a href="https://paulgreg.me/https-slides/?full#interception-traffic-http-video">exemple</a>)
               </section>
           </div>
 
@@ -533,7 +530,7 @@ Referer: http://example.org/index.html
 Content-Type: application/json
 
 [json data]</pre>
-              <p>Sans l’entête <acode>Access-Control-Allow-Origin</code>, le navigateur bloquera le contenu.</p>
+              <p>Sans l’entête <code>Access-Control-Allow-Origin</code>, le navigateur bloquera le contenu.</p>
               </section>
           </div>
 
@@ -617,12 +614,15 @@ Peut également être lu et écrit en JavaScript via <pre>document.cookie</pre>
           </div>
 
           <div class="slide" id="cookie-first-third-party-slide">
+            <style>
+                #cookie-first-third-party-slide p { text-align: center; }
+            </style>
              <section>
              <h2>Les Cookies</h2>
              <ul>
                  <li>Cookie "first/third party"
              </ul>
-             <p align="center"><img src="imgs/cookie-parties.png" title="First / third party cookie" alt=""/></p>
+             <p><img src="imgs/cookie-parties.png" title="First / third party cookie" alt=""/></p>
              </section>
           </div>
 
@@ -916,7 +916,7 @@ Content-Length: xxxx
                   <li>rétro-compatibilité complète
                   <li>ne remplace pas HTTP mais optimise l’échange des données
                   <li>multiplexage (plusieurs streams) au sein d’une seule requête TCP :
-                      <img src="imgs/h2-connections.png">
+                      <img src="imgs/h2-connections.png" alt="">
               </ul>
               </section>
           </div>
@@ -956,7 +956,7 @@ Content-Length: xxxx
   <script src="js/slides.js"></script>
   <script src="js/slides.js"></script>
   <script src="js/prefixfree.min.js"></script>
-  <script defer="defer">
+  <script>
       if ('serviceWorker' in navigator) {
           navigator.serviceWorker.register('./sw.js').then(function() {
               console.log('service worker registration complete');
