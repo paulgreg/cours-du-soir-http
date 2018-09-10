@@ -71,27 +71,20 @@
                 </div>
 
                 <div class="slide" id="summary-slide">
-                    <style>
-                        #summary-slide ol { column-count: 2; }
-                    </style>
                     <section>
                     <h2>Sommaire</h2>
                     <ol>
                         <li>Vue d’ensemble
-                        <li>La petite histoire
                         <li>Versions 0.9, 1.0. 1.1
-                        <li>URI, URL, URN
                         <li>Verbes
                         <li>Codes de retour
                         <li>Négociation de contenu
-                        <li>Plage de réponse et réponse partielle
-                        <li>Same Origin Policy, Cross-Origin Resource Sharing (CORS)
+                        <li>Réponse partielle
+                        <li>SOP, CORS
                         <li>Cookies
                         <li>Cache
                         <li>Authentification
-                        <li>Extensions (WebDAV,...)
                         <li>HTTP 2.0
-                        <li>Outils
                     </ol>
                     </section>
                 </div>
@@ -116,12 +109,13 @@
                 <div class="slide" id="overview-example-slide">
                     <section>
                     <h2>HTTP à la main</h2>
+                    <p>Connexion à <a href="http://neverssl.com">http://neverssl.com</a></p>
                     <pre>
-➜  ~ host neverssl.com
-<strong>neverssl.com</strong> has address <strong>52.85.74.244</strong>
+➜  ~ <strong>host neverssl.com
+neverssl.com</strong> has address <strong>52.85.74.244</strong>
 </pre>
 <pre>
-➜  ~ telnet 52.85.74.244 80
+➜  ~ <strong>telnet 52.85.74.244 80</strong>
 Trying 52.85.74.244...
 Connected to 52.85.74.244.
 Escape character is '^]'.
@@ -152,32 +146,6 @@ X-Amz-Cf-Id: I7YUe8nDTtm1o21NKrXIbTPUsvs9zDD7hHhbHFYDiVP--9UBfqX4kw==
               <section>
               <h2>Séquence</h2>
               <p class="center"><img src="imgs/http-sequence.png" title="Diagramme requête HTTP" alt="Diagramme requête HTTP" /></p>
-              </section>
-          </div>
-
-          <div class="slide" id="intro-title-slide">
-              <section class="middle">
-              <h2>La petite histoire...</h2>
-              </section>
-          </div>
-          <div class="slide" id="story-slide">
-              <section>
-              <h2>La petite histoire...</h2>
-              <ul>
-                  <li>En 1989, au <abbr title="Conseil Européen pour la Recherche Nucléaire">CERN</abbr>,
-                  <li><a href="http://www.w3.org/People/Berners-Lee/">Tim Berners-Lee</a> et <a href="http://www.robertcailliau.eu/Welcome-en.html">Robert Cailliau</a>
-                  <li>propose un système hypertexte
-                  <li>bâti sur <abbr title="Transmission Control Protocol">TCP</abbr>/<abbr title="Internet Protocol">IP</abbr>.
-                  <li>En 1991, devient HTTP/0.9
-                  <li>En 1993, le <abbr title="National Center for Supercomputing Applications">NCSA</abbr> créé <a href="ftp://ftp.ncsa.uiuc.edu/Mosaic/">Mosaic</a> et <a href="http://httpd.apache.org/ABOUT_APACHE.html">HTTPd</a>
-                  <li>En 1996, <a href="http://tools.ietf.org/html/rfc1945"><abbr title="Request for comment">RFC</abbr> 1945</a> : HTTP/1.0
-                  <li>En 1997, <a href="http://tools.ietf.org/html/rfc2068">RFC 2068</a> : HTTP/1.1
-                  <li>En 2000, <a href="http://www.ics.uci.edu/~fielding/">Roy Fielding</a> publie sa thèse <a href="http://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm">Architectural Styles and the Design of Network-based Software Architectures</a>
-                      (<a href="http://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm"><abbr title="Representational state transfer">REST</abbr></a>)
-                  <li><a href="http://www.w3.org/Protocols/">19 révisions</a> de HTTP/1.1 entre 2007 et 2012,
-                  <li>En 2009, Google <a href="http://googleresearch.blogspot.com/2009/11/2x-faster-web.html">propose</a> <a href="http://www.chromium.org/spdy">SPDY</a>,
-                  <li>En 2015, standardisation de HTTP/2 (h2) par l’<a href="https://ietf.org/"><abbr title="Internet Engineering Task Force">IETF</abbr></a> dans la <a href="https://tools.ietf.org/html/rfc7540"><abbr title="Request For Comment">RFC</abbr> 7540</a>
-              </ul>
               </section>
           </div>
 
@@ -215,31 +183,35 @@ X-Amz-Cf-Id: I7YUe8nDTtm1o21NKrXIbTPUsvs9zDD7hHhbHFYDiVP--9UBfqX4kw==
               <h2>HTTP 0.9, 1.0 et 1.1</h2>
               </section>
           </div>
+
           <div class="slide" id="http-0-9-slide">
               <section>
               <h2>HTTP 0.9</h2>
               <ul>
+                  <li>inventé en 1989 par <a href="http://www.w3.org/People/Berners-Lee/">Tim Berners-Lee</a> et <a href="http://www.robertcailliau.eu/Welcome-en.html">Robert Cailliau</a> au <abbr title="Conseil Européen pour la Recherche Nucléaire">CERN</abbr>
                   <li>n’est <strong>pas</strong> un standard
+                  <li>en cours de développement dans les années 90~95
                   <li>n’est pas figé, constantes évolutions
-                  <li>en cours de développement dans les années 91~95
-                  <li>un seul verbe : GET
-                  <li>port 80 par défaut
-                  <li>introduit le concept d’URI
-                  <li>introduit le code de retour (status code)
-                  <li>puis l’entête content-type
+                  <li>un seul verbe : <strong>GET</strong>
+                  <li>port <strong>80</strong>
+                  <li>introduit les concepts d’URI, de code de retour, d’entêtes
                   <li>sans état...
-                  <li>mais les cookies apparaissent par <a href="http://www.montulli.org/lou">Lou Montulli</a> en 94 pour une boutique d’ecommerce
+                  <li>mais <a href="http://www.montulli.org/lou">Lou Montulli</a> invente les <strong>cookies</strong> en 94 pour un site d’ecommerce
+                  <li>en 1993, le <abbr title="National Center for Supercomputing Applications">NCSA</abbr> créé le navigateur <a href="ftp://ftp.ncsa.uiuc.edu/Mosaic/">Mosaic</a>
+                      et le serveur <a href="http://httpd.apache.org/ABOUT_APACHE.html">HTTPd</a> qui deviendra <i>Apache HTTP Server</i>
               </ul>
               </section>
           </div>
+
           <div class="slide" id="http-1-0-slide">
               <section>
               <h2>HTTP 1.0</h2>
               <ul>
-                  <li>en 1996, <a href="http://tools.ietf.org/html/rfc1945"><abbr title="Request for comment">RFC</abbr> 1945</a>
-                  <li>verbe GET, POST, HEAD mais aussi PUT, DELETE, LINK, UNLINK
-                  <li>standardisation des entêtes, du formatage des réponses, des codes d’erreurs
-                  <li>cache côté client via les en‐têtes <code>Last-modified</code>, <code>Pragma</code>, <code>Expires</code> et la compression
+                  <li>en 1996, <a href="http://tools.ietf.org/html/rfc1945"><abbr title="Request for comment">RFC</abbr> 1945</a> par l’<abbr title="Internet Engineering Task Force">IETF</abbr>
+                  <li>verbe <strong>GET</strong>, <strong>POST</strong>, <strong>HEAD</strong> mais aussi <strong>PUT</strong>, <strong>DELETE</strong>, LINK, UNLINK
+                  <li>standardisation des entêtes, des réponses, des codes d’erreurs
+                  <li>cache côté client via <code>Last-modified</code>, <code>Pragma</code>, <code>Expires</code>
+                  <li>compression via <code>Accept-encoding</code> et <code>Content-encoding</code>
               </ul>
               </section>
           </div>
@@ -250,13 +222,15 @@ X-Amz-Cf-Id: I7YUe8nDTtm1o21NKrXIbTPUsvs9zDD7hHhbHFYDiVP--9UBfqX4kw==
               <section>
               <h2>HTTP 1.1</h2>
               <ul>
-                  <li>En 1997, <a href="http://tools.ietf.org/html/rfc2068"><abbr title="Request for comment">RFC</abbr> 2068</a> : HTTP/1.1
+                  <li><a href="http://tools.ietf.org/html/rfc2068"><abbr title="Request for comment">RFC</abbr> 2068</a> en 1997 + <a href="http://www.w3.org/Protocols/">19 révisions</a> entre 2007 et 2012
                   <li>OPTIONS, CONNECT et TRACE (<del>LINK</del>, <del>UNLINK</del>)
                   <li>en-tête <code>Host</code> obligatoire <small>(permettant plusieurs sites web depuis une même IP)</small>
-                  <li>négociation de contenu et de langage (<code>Accept</code>, <code>Accept-Language</code>, <code>Accept-Charset</code>)<small>, un pas en avant vers REST</small>
-                  <li><img src="imgs/pipeline.png" alt="HTTP Pipelining" style="float:right; width:400px; border: 1px solid black;" /><code>Connection: keep-alive</code> permettant le pipelining
-                  <li>découpe de la réponse en plusieurs morceaux via <code>Transfer-Encoding: chunked</code> <small>(un exemple est l’usage "temps réel" tel que les premiers chats)</small>
-                  <li><a href="http://www.w3.org/Protocols/">19 révisions</a> entre 2007 et 2012 et des ajouts divers tels que <a href="http://www.w3.org/TR/CSP/">Content Security Policy</a>
+                  <li>négociation de langue et de contenu (<code>Accept*</code>),
+                  <li>envoi de la réponse en morceaux via <code>Transfer-Encoding: chunked</code>
+                      <small>(souvenez-vous des premiers chats « temps réel »)</small>
+                  <li>
+                      <code>Connection: keep-alive</code> permettant le pipelining :
+                      <img src="imgs/pipeline.png" alt="HTTP Pipelining" style="width:400px; margin: .5em 0 .5em 6em; border: 1px solid black;" />
               </ul>
               </section>
           </div>
@@ -910,7 +884,7 @@ Content-Length: xxxx
               <section>
               <h2>HTTP/2 (ou h2)</h2>
               <ul>
-                  <li>Google propose <abbr title="Speedy"><a href="https://tools.ietf.org/html/draft-mbelshe-httpbis-spdy-00">SPDY</a></abbr> vers 2010
+                  <li>Google propose <abbr title="Speedy"><a href="https://tools.ietf.org/html/draft-mbelshe-httpbis-spdy-00">SPDY</a></abbr> en <a href="http://googleresearch.blogspot.com/2009/11/2x-faster-web.html">2009</a>
                   <li>création d’un groupe de travail (httpbis) par l’IETF
                   <li>SPDY deviendra la base de HTTP/2, il sera publié en 2015 (<a href="https://tools.ietf.org/html/rfc7540">RFC7540</a>)
                   <li>rétro-compatibilité complète
