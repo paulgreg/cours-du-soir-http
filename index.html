@@ -795,18 +795,17 @@ Content-Language: en-US
           <div class="slide" id="authentification-basic-slide">
               <section>
               <h2>Authenfication basique</h2>
-<pre class="client">GET /private/index.html HTTP/1.1
-Host: www.exemple.org
+<pre class="client">GET / HTTP/1.1
+Host: fr.mappyrecette.com
 ...</pre>
 <pre class="server"><strong>HTTP/1.1 401 Authorization Required
-WWW-Authenticate: Basic realm="Secure Area"</strong>
-Content-type: text/html
+WWW-Authenticate: Basic realm="Mappy authentication"</strong>
 ...</pre>
 <img alt="authentification box" src="imgs/authentification.png" style="border: 1px solid black;">
 <h3>Encodage base 64</h3>
 <kbd>$ echo -n "Aladdin:open sesame" | base64 -            # QWxhZGRpbjpvcGVuIHNlc2FtZQ==</kbd>
-<pre class="client">GET /private/index.html HTTP/1.1
-Host: www.exemple.org
+<pre class="client">GET / HTTP/1.1
+Host: fr.mappyrecette.com
 <strong>Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==</strong>
 </pre>
 <kbd>$ echo -n QWxhZGRpbjpvcGVuIHNlc2FtZQ== | base64 -d    # Aladdin:open sesame</kbd>
