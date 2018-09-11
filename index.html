@@ -134,20 +134,12 @@ Host: neverssl.com
 HTTP/1.1 200 OK</strong>
 Content-Type: text/html
 Content-Length: 2536
-Connection: keep-alive
 Date: Sat, 18 Aug 2018 21:13:03 GMT
-Last-Modified: Thu, 14 Jun 2018 00:16:40 GMT
-ETag: "e8bb9152091d61caa9d69fed8c4aebc6"
-Accept-Ranges: bytes
-Server: AmazonS3
-Vary: Accept-Encoding
-Age: 58125
-X-Cache: Hit from cloudfront
-Via: 1.1 5db82aafd9021b07695423274288b59e.cloudfront.net (CloudFront)
-X-Amz-Cf-Id: I7YUe8nDTtm1o21NKrXIbTPUsvs9zDD7hHhbHFYDiVP--9UBfqX4kw==
-
+...
 <strong>&lt;html&gt;</strong>...
 </pre>
+ou plus simplement...
+<pre><strong>curl -I -v -XGET http://neverssl.com/</strong></pre>
               </section>
           </div>
 
